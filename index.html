@@ -1,0 +1,2710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marco Zunino - Official Fan Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Security Meta Tags -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://formspree.io;
+        style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+        img-src 'self' data: https:;
+        font-src 'self' https://cdnjs.cloudflare.com;
+        connect-src 'self' https://formspree.io;
+        frame-ancestors 'none';
+        form-action 'self' https://formspree.io;
+    ">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta name="robots" content="index, follow">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --warning: #f39c12;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, var(--primary), var(--dark));
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo img {
+            height: 75px;
+            border-radius: 30%;
+            object-fit: cover;
+        }
+    
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+		/* Title color split: Alejandro = red, Sanz = white */
+		#siteTitle .site-first {
+  			color: var(--secondary); /* uses your existing red variable (#e74c3c) */
+		}
+		#siteTitle .site-last {
+  			color: #ffffff; /* white */
+		}
+
+        .logo span {
+            color: var(--secondary);
+        }
+    
+        .logo i {
+            font-size: 32px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 17px;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .language-selector {
+            position: relative;
+        }
+        
+        .language-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.3s;
+            gap: 5px;
+        }
+        
+        .language-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            width: 150px;
+            padding: 10px 0;
+            margin-top: 5px;
+        }
+        
+        .language-dropdown a {
+            display: block;
+            padding: 8px 15px;
+            color: var(--dark);
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .language-dropdown a:hover {
+            background: #f0f0f0;
+        }
+        
+        .language-selector:hover .language-dropdown {
+            display: block;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+			background: var(--secondary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid white;
+            color: white;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .btn-primary {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #c62828;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://raw.githubusercontent.com/williamgutierrezlevy58-eng/alejandrosanzofficialplatform/main/Background.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .hero .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .hero .btn:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Products Section */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--dark);
+            font-size: 36px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .product-info p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .product-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        .form-control.error {
+            border-color: var(--secondary);
+        }
+
+        .error-message {
+            color: var(--secondary);
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            margin: 50px auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            animation: modalFade 0.3s;
+        }
+
+        @keyframes modalFade {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            color: var(--dark);
+            font-size: 24px;
+        }
+
+        .close-modal {
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--secondary);
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .membership-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .membership-option {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .membership-option:hover {
+            border-color: var(--accent);
+        }
+
+        .membership-option.selected {
+            border-color: var(--secondary);
+            background: rgba(231, 76, 60, 0.1);
+        }
+
+        .membership-option h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .membership-option .price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: #f9f9f9;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text {
+            flex: 1;
+            color: var(--primary)
+        }
+        
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Security Notice */
+        .security-notice {
+            background: #f8f9fa;
+            border-left: 4px solid var(--accent);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        /* Language Switch Button */
+        .lang-switch {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0 10px 10px 10px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: var(--success);
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        /* Notification System */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1001;
+            display: none;
+            max-width: 300px;
+        }
+        
+        .notification.error {
+            background: var(--secondary);
+        }
+        
+        /* Formspree Status */
+        .formspree-status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            text-align: center;
+            display: none;
+        }
+        
+        .formspree-status.success {
+            background: var(--success);
+            color: white;
+        }
+        
+        .formspree-status.error {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        /* Security Badge */
+        .security-badge {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 12px;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+		 /* Live Chat Widget Styles */
+        .chat-widget-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 9999;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .chat-widget-button {
+            width: 60px;
+            height: 60px;
+            background: #e74c3c;
+            border: none;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+            transition: background 0.2s;
+        }
+        .chat-widget-button:hover {
+            background: #c0392b;
+        }
+        .chat-widget-box {
+            display: none;
+            flex-direction: column;
+            width: 350px;
+            height: 470px;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.20);
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            overflow: hidden;
+        }
+        .chat-widget-header {
+            background: linear-gradient(to right, #2c3e50, #1a242f);
+            color: #fff;
+            padding: 16px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .chat-widget-header h3 {
+            margin: 0;
+            font-size: 17px;
+            font-weight: 500;
+        }
+        .chat-widget-close {
+            cursor: pointer;
+            font-size: 22px;
+        }
+        .chat-widget-messages {
+            flex: 1;
+            padding: 16px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: #f5f5f5;
+        }
+        .chat-widget-message {
+            max-width: 80%;
+            padding: 10px 16px;
+            border-radius: 17px;
+            line-height: 1.5;
+            font-size: 15px;
+        }
+        .chat-widget-message.bot {
+            background: #f1f1f1;
+            align-self: flex-start;
+            border-top-left-radius: 4px;
+        }
+        .chat-widget-message.user {
+            background: #3498db;
+            color: #fff;
+            align-self: flex-end;
+            border-top-right-radius: 4px;
+        }
+        .chat-widget-input-bar {
+            display: flex;
+            padding: 12px;
+            border-top: 1px solid #ececec;
+            background: #fff;
+        }
+        .chat-widget-input-bar input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 18px;
+            outline: none;
+            font-size: 15px;
+        }
+        .chat-widget-input-bar button {
+            margin-left: 10px;
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 18px;
+            padding: 0 16px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .chat-widget-input-bar button:hover {
+            background: #c0392b;
+        }
+        .chat-widget-quick-questions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .chat-widget-quick-question {
+            padding: 7px 12px;
+            background: #f1f1f1;
+            border-radius: 15px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .chat-widget-quick-question:hover {
+            background: #e1e1e1;
+        }
+        @media (max-width: 480px) {
+            .chat-widget-box { width: 98vw; right: -6px; }
+		}
+    </style>
+</head>
+<body>
+    <!-- Security Badge -->
+    <div class="security-badge">
+        <i class="fas fa-shield-alt"></i> <span id="secureText">Secure Connection</span>
+    </div>
+
+    <!-- Language Switch Button -->
+    <div class="lang-switch" id="langSwitch">
+        <i class="fas fa-language"></i> <span id="currentLang">EN</span>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+					        <img src="https://raw.githubusercontent.com/williamgutierrezlevy58-eng/alejandrosanzofficialplatform/main/Sanz logo.jpg" alt="Marco Zunino Logo" id="logoImage">
+                    <span id="siteTitle">
+        						<span class="site-first">Alejandro</span>
+        						<span class="site-last">Sanz</span>
+        					</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home" id="navHome">Home</a></li>
+                        <li><a href="#about" id="navAbout">About</a></li>
+                        <li><a href="#products" id="navProducts">Products</a></li>
+                        <li><a href="#contact" id="navContact">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <div class="language-selector">
+                        <button class="language-btn" id="languageBtn">
+                            <i class="fas fa-globe"></i> <span id="currentLangDisplay">EN</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="language-dropdown">
+              							<a href="#" onclick="setLanguage('ar')">Arabic</a>
+              							<a href="#" onclick="setLanguage('cn')">Chinese</a>
+                            <a href="#" onclick="setLanguage('en')">English</a>
+                            <a href="#" onclick="setLanguage('fr')">French</a>
+                            <a href="#" onclick="setLanguage('de')">German</a>
+              							<a href="#" onclick="setLanguage('el')">Greek</a>
+              							<a href="#" onclick="setLanguage('it')">Italia</a>
+              							<a href="#" onclick="setLanguage('pt')">Portuguese</a>
+              							<a href="#" onclick="setLanguage('ru')">Russian</a>
+                            <a href="#" onclick="setLanguage('es')">Spanish</a>
+                        </div>
+                    </div>                  
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1 id="heroTitle1">Welcome To</h1>
+            <h1 id="heroTitle2">Marco Zunino Official Fan Platform</h1>
+            <p id="heroDescription">Get exclusive access to fan memberships, and meet & greet opportunities with Marco Zunino himself!</p>
+            <a href="#products" class="btn" id="heroButton">Explore Offers</a>
+        </div>
+    </section>
+
+    <!-- Security Notice -->
+    <div class="container">
+        <div class="security-notice">
+            <strong><i class="fas fa-shield-alt"></i> <span id="securityNoticeTitle">Security Notice:</span></strong> <span id="securityNoticeText">This website uses advanced security measures to protect your data. All form submissions are encrypted and monitored for suspicious activity.</span>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <section id="products" class="container">
+        <h2 class="section-title" id="productsTitle">Exclusive Fan Offers</h2>
+        <div class="products">
+            <!-- Fan Membership -->
+            <div class="product-card" onclick="openModal('membershipModal')">
+                <div class="product-image">
+                    <img src="https://raw.githubusercontent.com/williamgutierrezlevy58-eng/alejandrosanzofficialplatform/main/Sanz Card.jpg" alt="Marco Zunino Fan Membership" id="membershipImage">
+                </div>
+                <div class="product-info">
+                    <h3 id="membershipTitle">Fan Membership</h3>
+                    <p id="membershipDescription">Join the exclusive fan club for special perks, discounts, and exclusive content.</p>
+                    <div class="product-price" id="membershipPrice">From $499.99/year</div>
+                    <a class="btn" id="membershipButton">Apply Now</a>
+                </div>
+            </div>
+
+            <!-- Meet & Greet -->
+            <div class="product-card" onclick="openModal('meetModal')">
+                <div class="product-image">
+                    <img src="https://raw.githubusercontent.com/williamgutierrezlevy58-eng/alejandrosanzofficialplatform/main/Meet&Greet.jpg" alt="Marco Zunino Meet & Greet" id="meetImage">
+                </div>
+                <div class="product-info">
+                    <h3 id="meetTitle">Meet & Greet</h3>
+                    <p id="meetDescription">Get the chance to meet with Marco Zunino personally. A once-in-a-lifetime experience!</p>
+                    <div class="product-price" id="meetPrice">From $999.99</div>
+                    <a class="btn" id="meetButton">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+	   <section class="about" id="about">
+        <div class="container about-content">
+            <div class="about-image">
+                <img src="https://raw.githubusercontent.com/williamgutierrezlevy58-eng/alejandrosanzofficialplatform/main/About.jpg" alt="Marco Zunino" id="aboutImage">
+            </div>
+            <div class="about-text">
+                <h3 id="aboutTitle">About Marco Zunino</h3>
+                  <p id="aboutText1">Marco Zunino is a Peruvian actor and singer celebrated for his work in theatre and television. With a career spanning many years, he has earned recognition for his performances and is known for his presence across Latin American entertainment.</p>
+                <p id="aboutText2">Renowned for his heartfelt performances and collaborations with international artists, Marco has built a devoted global fanbase. This official website is the place for fans to connect, get updates on new projects, tours, exclusive content, and special fan experiences.</p>
+                <p id="aboutText3">Join thousands of fans worldwide in supporting this incredible artist!</p>
+            </div>
+        </div>
+    </section>
+	
+    <!-- Contact Form Section -->
+    <section id="contact" class="container">
+        <h2 class="section-title" id="contactTitle">Subscribe To Our Newsletters</h2>
+        <form id="contactForm" class="modal-body" style="max-width: 800px; margin: 0 auto;" action="https://formspree.io/f/xlggenga" method="POST">
+            <input type="hidden" name="_subject" value="New Contact Form Submission">
+            <input type="hidden" name="_format" value="plain">
+            <input type="hidden" name="_language" value="en">
+            
+            <div class="form-group">
+                <label for="name" id="nameLabel">Full Name</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="Enter your full name" required maxlength="100">
+                <div class="error-message" id="nameError">Please enter a valid name (letters and spaces only, max 100 characters)</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email" id="emailLabel">Email Address</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required maxlength="254">
+                <div class="error-message" id="emailError">Please enter a valid email address</div>
+            </div>
+
+            <!-- Honeypot field for bots -->
+            <div style="display: none;">
+                <label for="website">Website</label>
+                <input type="text" id="website" name="website" tabindex="-1">
+            </div>
+
+            <!-- Formspree Status Message -->
+            <div class="formspree-status" id="formspreeStatus"></div>
+
+            <div class="success-message" id="successMessage">
+                <span id="successText">You Have Successfully Subscribed To Newsletters. Thank You</span>
+            </div>
+
+            <button type="submit" class="btn" style="width: 100%;" id="contactSubmit">Join Our Newsletters</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 id="footerAboutTitle">About Us</h3>
+                    <p id="footerAboutText">The official Marco Zunino fan Platform offering exclusive access to memberships, and meet & greet experiences.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3 id="footerLinksTitle">Quick Links</h3>
+                    <ul class="footer-links">
+                    <li><a href="#home" id="footerHome">Home</a></li>
+                    <li><a href="#about" id="footerAbout">About</a></li>
+                    <li><a href="#products" id="footerProducts">Products</a></li>
+                    <li><a href="#contact" id="footerContact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 id="footerConnectTitle">Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/MarcoZuninoOf/" target="_blank" rel="noopener noreferrer" aria-label="Follow Marco Zunino on Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://x.com/marco_zunino?lang=en" target="_blank" rel="noopener noreferrer" aria-label="Follow Marco Zunino on Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/marcozunino_of/" target="_blank" rel="noopener noreferrer" aria-label="Follow Marco Zunino on Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+            						<a href="https://www.tiktok.com/@marcozunino_of"<i class="fab fa-tiktok"></i>
+            						</a>
+                    </div>
+                    <p style="margin-top: 15px; font-size: 14px; color: #ccc;" id="footerFollowText">Follow Marco Zunino on social media for the latest updates!</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p id="copyrightText">&copy; 2025 Marco Zunino Fan Platform. All rights reserved. | <a href="#" style="color: #ddd;">Privacy Policy</a> | <a href="#" style="color: #ddd;">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>      
+    
+    <!-- Membership Modal -->
+    <div id="membershipModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="membershipModalTitle">Fan Membership</h2>
+                <span class="close-modal" onclick="closeModal('membershipModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="membershipForm" action="https://formspree.io/f/xlggenga" method="POST">
+                    <input type="hidden" name="_subject" value="New Membership Request">
+                    <input type="hidden" name="_format" value="plain">
+                    <input type="hidden" name="_language" value="en">
+                    <input type="hidden" name="form-type" value="Membership Request">
+                    
+                    <p id="membershipSelectText">Select your preferred membership level:</p>
+                    <div class="membership-options">
+                        <div class="membership-option" onclick="selectMembership(this)">
+                            <h3 id="regularFanTitle">Regular Fan</h3>
+                            <p id="regularFanDesc">Basic benefits</p>
+                            <div class="price">$499.99/year</div>
+                            <input type="radio" name="membership-level" value="Regular Fan" style="display: none;" required>
+                        </div>
+                        
+                        <div class="membership-option" onclick="selectMembership(this)">
+                            <h3 id="vipFanTitle">VIP Fan</h3>
+                            <p id="vipFanDesc">Extra benefits</p>
+                            <div class="price">$699.99/year</div>
+                            <input type="radio" name="membership-level" value="VIP Fan" style="display: none;" required>
+                        </div>
+                        
+                        <div class="membership-option" onclick="selectMembership(this)">
+                            <h3 id="vvipFanTitle">VVIP Fan</h3>
+                            <p id="vvipFanDesc">All benefits</p>
+                            <div class="price">$999.99/year</div>
+                            <input type="radio" name="membership-level" value="VVIP Fan" style="display: none;" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="membershipFullName" id="membershipNameLabel">Full Name</label>
+                        <input type="text" id="membershipFullName" name="fullName" class="form-control" placeholder="Enter your full name" required maxlength="100">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="membershipPhone" id="membershipPhoneLabel">Phone Number</label>
+                        <input type="number" id="membershipPhone" name="phonenumber" class="form-control" placeholder="Enter your phone number" required maxlength="100">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="membershipEmail" id="membershipEmailLabel">Email Address</label>
+                        <input type="email" id="membershipEmail" name="emailAddress" class="form-control" placeholder="Enter your email" required maxlength="254">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fanYear" id="fanYearLabel">What Year Did You Become A Fan</label>
+                        <input type="number" id="fanYear" name="fanYear" class="form-control" placeholder="Enter the year" min="1990" max="2025" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="membershipCountry" id="membershipCountryLabel">Country</label>
+                        <input type="text" id="membershipCountry" name="country" class="form-control" placeholder="Enter your country" required maxlength="150">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="membershipAddress" id="membershipAddressLabel">Address</label>
+                        <input type="text" id="membershipAddress" name="address" class="form-control" placeholder="Enter your full address" required maxlength="300">
+                    </div>
+                    
+                    <!-- Honeypot field for bots -->
+                    <div style="display: none;">
+                        <label for="url">URL</label>
+                        <input type="text" id="url" name="url" tabindex="-1">
+                    </div>
+                    
+                    <!-- Formspree Status Message -->
+                    <div class="formspree-status" id="membershipFormspreeStatus"></div>
+                    <div class="success-message" id="membershipSuccessMessage">
+                        <span id="membershipSuccessText">You submitted a request and the management will contact you via email shortly, always check your email for notification from us. Thank you.</span>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;" id="membershipSubmit">Submit Your Request</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Meet & Greet Modal -->
+    <div id="meetModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="meetModalTitle">Meet & Greet</h2>
+                <span class="close-modal" onclick="closeModal('meetModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="meetForm" action="https://formspree.io/f/xlggenga" method="POST">
+                    <input type="hidden" name="_subject" value="New Meet & Greet Request">
+                    <input type="hidden" name="_format" value="plain">
+                    <input type="hidden" name="_language" value="en">
+                    <input type="hidden" name="form-type" value="Meet & Greet Request">
+                    
+                    <p id="meetSelectText">Select your preferred meet & greet package:</p>
+                    <div class="membership-options">
+                        <div class="membership-option" onclick="selectMeetPackage(this, 'standard')">
+                            <h3 id="standardMeetTitle">Standard Meet & Greet</h3>
+                            <p id="standardMeetDesc">Basic meet & greet experience</p>
+                            <div class="price">$999.99</div>
+                            <input type="radio" name="meetPackage" value="standard" style="display: none;" required>
+                        </div>
+                        
+                        <div class="membership-option" onclick="selectMeetPackage(this, 'photo')">
+                            <h3 id="photoMeetTitle">Photo Experience</h3>
+                            <p id="photoMeetDesc">Includes professional photo session</p>
+                            <div class="price">$1499.99</div>
+                            <input type="radio" name="meetPackage" value="photo" style="display: none;" required>
+                        </div>
+                        
+                        <div class="membership-option" onclick="selectMeetPackage(this, 'ultimate')">
+                            <h3 id="ultimateMeetTitle">Ultimate Experience</h3>
+                            <p id="ultimateMeetDesc">VIP treatment with all benefits</p>
+                            <div class="price">$2999.99</div>
+                            <input type="radio" name="meetPackage" value="ultimate" style="display: none;" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="meetDate" id="meetDateLabel">Select Your Preferred Meeting Date</label>
+                        <input type="date" id="meetDate" name="meetDate" class="form-control" min="">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="specialRequests" id="specialRequestsLabel">Special Requests</label>
+                        <textarea id="specialRequests" name="specialRequests" class="form-control" rows="3" placeholder="Any special requests or requirements" maxlength="1500"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="meetFanYear" id="meetFanYearLabel">What Year Did You Become A Fan</label>
+                        <input type="number" id="meetFanYear" name="fanYear" class="form-control" placeholder="Enter the year" min="1990" max="2025" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="meetFullName" id="meetFullNameLabel">Full Name</label>
+                        <input type="text" id="meetFullName" name="fullName" class="form-control" placeholder="Enter your full name" required maxlength="100">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="meetPhone" id="meetPhoneLabel">Phone Number</label>
+                        <input type="number" id="meetPhone" name="phonenumber" class="form-control" placeholder="Enter your phone number" required maxlength="100">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="meetEmail" id="meetEmailLabel">Email Address</label>
+                        <input type="email" id="meetEmail" name="emailAddress" class="form-control" placeholder="Enter your email" required maxlength="254">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="meetCountry" id="meetCountryLabel">Country</label>
+                        <input type="text" id="meetCountry" name="country" class="form-control" placeholder="Enter your country" required maxlength="150">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="meetAddress" id="meetAddressLabel">Address</label>
+                        <input type="text" id="meetAddress" name="address" class="form-control" placeholder="Enter your full address" required maxlength="300">
+                    </div>
+                    
+                    <!-- Honeypot field for bots -->
+                    <div style="display: none;">
+                        <label for="homepage">Homepage</label>
+                        <input type="text" id="homepage" name="homepage" tabindex="-1">
+                    </div>
+                    
+                    <!-- Formspree Status Message -->
+                    <div class="formspree-status" id="meetFormspreeStatus"></div>
+                    
+                    <div class="success-message" id="meetSuccessMessage">
+                        <span id="meetSuccessText">You submitted a request and the management will contact you via email shortly, always check your email for notification from us. Thank you.</span>
+                    </div>
+                    
+                    <button type="submit" class="btn" style="width: 100%;" id="meetSubmit">Submit Your Request</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification System -->
+    <div class="notification" id="notification">
+        <span id="notificationText">New request submitted! Check your email for details.</span>
+    </div>
+
+	<!-- Live Chat Widget -->
+    <div class="chat-widget-container">
+        <button class="chat-widget-button" id="chatWidgetButton" aria-label="Open chat">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div class="chat-widget-box" id="chatWidgetBox" aria-live="polite" aria-label="Live chat box">
+            <div class="chat-widget-header">
+                <h3>Live Support</h3>
+                <span class="chat-widget-close" id="chatWidgetClose" title="Close chat">&times;</span>
+            </div>
+            <div class="chat-widget-messages" id="chatWidgetMessages">
+                <div class="chat-widget-message bot">
+                    Hi! How can I help you today?
+                </div>
+                <div class="chat-widget-quick-questions">
+                    <div class="chat-widget-quick-question" data-question="I need help with my membership purchase">I need help with my membership purchase</div>
+                    <div class="chat-widget-quick-question" data-question="I have issues with Meet & Greet registration">I have issues with Meet & Greet registration</div>
+                </div>
+            </div>
+            <div class="chat-widget-input-bar">
+                <input type="text" id="chatWidgetInput" placeholder="Type your message..." autocomplete="off" aria-label="Type your message">
+                <button id="chatWidgetSend" title="Send"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Language Support
+        const translations = {
+            en: {
+                // Navigation
+                "navHome": "Home",
+                "navAbout": "About",
+                "navProducts": "Products",
+                "navContact": "Contact",
+                
+                // Hero Section
+                "heroTitle1": "Welcome To",
+                "heroTitle2": "Marco Zunino Official Fan Platform",
+                "heroDescription": "Get exclusive access to fan memberships, and meet & greet opportunities with Marco Zunino himself!",
+                "heroButton": "Explore Offers",
+                
+                // Security
+                "secureText": "Secure Connection",
+                "securityNoticeTitle": "Security Notice:",
+                "securityNoticeText": "This website uses advanced security measures to protect your data. All form submissions are encrypted and monitored for suspicious activity.",
+                
+                // Products
+                "productsTitle": "Exclusive Fan Offers",
+                "membershipTitle": "Fan Membership",
+                "membershipDescription": "Join the exclusive fan club for special perks, discounts, and exclusive content.",
+                "membershipPrice": "From $499.99/year",
+                "membershipButton": "Apply Now",
+                "meetTitle": "Meet & Greet",
+                "meetDescription": "Get the chance to meet Marco Zunino personally. A once-in-a-lifetime experience!",
+                "meetPrice": "From $999.99",
+                "meetButton": "Book Now",
+                
+                // About Section
+                "aboutTitle": "About Marco Zunino",
+                "aboutText1": "Marco Zunino is a Peruvian actor and singer celebrated for his work in theatre and television. With a career spanning many years, he has earned recognition for his performances and is known for his presence across Latin American entertainment.",
+                "aboutText2": "Renowned for his heartfelt performances and collaborations with international artists, Marco has built a devoted global fanbase. This official website is the place for fans to connect, get updates on new projects, tours, exclusive content, and special fan experiences.",
+                "aboutText3": "Join thousands of fans worldwide in supporting this incredible artist!",
+               
+				        // Contact Form
+                "contactTitle": "Subscribe To Our Newsletters",
+                "nameLabel": "Full Name",
+                "emailLabel": "Email Address",
+                "contactSubmit": "Join Now",
+                "successText": "You Have Successfully Subscribed Our Newsletters. Thank You.",
+                
+                // Footer
+                "footerAboutTitle": "About Us",
+                "footerAboutText": "The official Marco Zunino fan Platform offering exclusive access to memberships, and meet & greet experiences.",
+                "footerLinksTitle": "Quick Links",
+                "footerHome": "Home",
+                "footerAbout": "About",
+                "footerProducts": "Products",
+                "footerContact": "Contact",
+                "footerConnectTitle": "Connect With Us",
+                "footerFollowText": "Follow Marco Zunino on social media for the latest updates!",
+                "copyrightText": "© 2026 Marco Zunino Fan Platform. All rights reserved.",
+                
+                // Membership Modal
+                "membershipModalTitle": "Fan Membership",
+                "membershipSelectText": "Select your preferred membership level:",
+                "regularFanTitle": "Regular Fan",
+                "regularFanDesc": "Basic benefits",
+                "vipFanTitle": "VIP Fan",
+                "vipFanDesc": "Extra benefits",
+                "vvipFanTitle": "VVIP Fan",
+                "vvipFanDesc": "All benefits",
+                "membershipNameLabel": "Full Name",
+                "membershipPhoneLabel": "Phone Number",
+                "membershipEmailLabel": "Email Address",
+                "fanYearLabel": "What Year Did You Become A Fan",
+                "membershipCountryLabel": "Country",
+                "membershipAddressLabel": "Address",
+                "membershipSubmit": "Submit Your Request",
+                "membershipSuccessText": "You submitted a request and the management will contact you via email shortly, always check your email for notification from us. Thank you.",
+                
+                // Meet & Greet Modal
+                "meetModalTitle": "Meet & Greet",
+                "meetSelectText": "Select your preferred meet & greet package:",
+                "standardMeetTitle": "Standard Meet & Greet",
+                "standardMeetDesc": "Basic meet & greet experience",
+                "photoMeetTitle": "Photo Experience",
+                "photoMeetDesc": "Includes professional photo session",
+                "ultimateMeetTitle": "Ultimate Experience",
+                "ultimateMeetDesc": "VIP treatment with all benefits",
+                "meetDateLabel": "Preferred Meeting Date and Time",
+                "specialRequestsLabel": "Special Requests",
+                "meetFanYearLabel": "What Year Did You Become A Fan",
+                "meetFullNameLabel": "Full Name",
+                "meetPhoneLabel": "Phone Number",
+                "meetEmailLabel": "Email Address",
+                "meetCountryLabel": "Country",
+                "meetAddressLabel": "Address",
+                "meetSubmit": "Submit Your Request",
+                "meetSuccessText": "You submitted a request and the management will contact you via email shortly, always check your email for notification from us. Thank you.",
+                
+                // Notification
+                "notificationText": "New request submitted! Check your email for details."
+            },
+            es: {
+                // Navigation
+                "navHome": "Inicio",
+                "navAbout": "Acerca de",
+                "navProducts": "Productos",
+                "navContact": "Contacto",
+                
+                // Hero Section
+                "heroTitle1": "Bienvenido a",
+                "heroTitle2": "Plataforma Oficial de Fans de Marco Zunino",
+                "heroDescription": "Obtén acceso exclusivo a membresías de fans y oportunidades de encuentro con Marco Zunino en persona.",
+                "heroButton": "Explorar ofertas",
+                
+                // Security
+                "secureText": "Conexión segura",
+                "securityNoticeTitle": "Aviso de seguridad:",
+                "securityNoticeText": "Este sitio web utiliza medidas de seguridad avanzadas para proteger sus datos. Todas las solicitudes de formularios están cifradas y se supervisan por actividad sospechosa.",
+                
+                // Products
+                "productsTitle": "Ofertas Exclusivas para Fans",
+                "membershipTitle": "Membresía de Fan",
+                "membershipDescription": "Únete al club exclusivo de fans para obtener beneficios especiales, descuentos y contenido exclusivo.",
+                "membershipPrice": "Desde $499.99/año",
+                "membershipButton": "Solicitar ahora",
+                "meetTitle": "Encuentro y Saludo",
+                "meetDescription": "Obtén la oportunidad de conocer personalmente a Marco Zunino. ¡Una experiencia única en la vida!",
+                "meetPrice": "Desde $999.99",
+                "meetButton": "Reservar ahora",
+                
+                // About Section
+                "aboutTitle": "Sobre Marco Zunino",
+                "aboutText1": "Marco Zunino es un actor y cantante peruano reconocido por su trabajo en teatro y televisión. Con una carrera que abarca muchos años, ha ganado reconocimiento por sus actuaciones y es conocido en el entretenimiento latinoamericano.",
+                "aboutText2": "Reconocido por sus interpretaciones emotivas y colaboraciones con artistas internacionales, Marco ha construido una base de fans devota a nivel mundial. Este sitio oficial es el lugar para que los fans se conecten, reciban actualizaciones sobre nuevos proyectos, giras, contenido exclusivo y experiencias especiales.",
+                "aboutText3": "¡Únete a miles de fans en todo el mundo apoyando a este increíble artista!",
+               
+                // Contact Form
+                "contactTitle": "Suscríbete a nuestros boletines",
+                "nameLabel": "Nombre completo",
+                "emailLabel": "Dirección de correo",
+                "contactSubmit": "Únete ahora",
+                "successText": "Te has suscrito correctamente a nuestros boletines. Gracias.",
+                
+                // Footer
+                "footerAboutTitle": "Sobre nosotros",
+                "footerAboutText": "La plataforma oficial de fans de Marco Zunino que ofrece acceso exclusivo a membresías y experiencias de encuentro.",
+                "footerLinksTitle": "Enlaces rápidos",
+                "footerHome": "Inicio",
+                "footerAbout": "Acerca de",
+                "footerProducts": "Productos",
+                "footerContact": "Contacto",
+                "footerConnectTitle": "Conéctate con nosotros",
+                "footerFollowText": "¡Sigue a Marco Zunino en las redes sociales para las últimas actualizaciones!",
+                "copyrightText": "© 2026 Plataforma de Fans de Marco Zunino. Todos los derechos reservados.",
+                
+                // Membership Modal
+                "membershipModalTitle": "Membresía de Fan",
+                "membershipSelectText": "Seleccione su nivel de membresía preferido:",
+                "regularFanTitle": "Fan Regular",
+                "regularFanDesc": "Beneficios básicos",
+                "vipFanTitle": "Fan VIP",
+                "vipFanDesc": "Beneficios adicionales",
+                "vvipFanTitle": "Fan VVIP",
+                "vvipFanDesc": "Todos los beneficios",
+                "membershipNameLabel": "Nombre completo",
+                "membershipPhoneLabel": "Número de teléfono",
+                "membershipEmailLabel": "Dirección de correo",
+                "fanYearLabel": "¿En qué año te hiciste fan?",
+                "membershipCountryLabel": "País",
+                "membershipAddressLabel": "Dirección",
+                "membershipSubmit": "Enviar solicitud",
+                "membershipSuccessText": "Has enviado una solicitud y la administración se pondrá en contacto contigo por correo electrónico en breve. Revisa tu correo para notificaciones de nuestra parte. Gracias.",
+                
+                // Meet & Greet Modal
+                "meetModalTitle": "Encuentro y Saludo",
+                "meetSelectText": "Seleccione su paquete de encuentro preferido:",
+                "standardMeetTitle": "Encuentro Estándar",
+                "standardMeetDesc": "Experiencia básica de encuentro y saludo",
+                "photoMeetTitle": "Experiencia de Foto",
+                "photoMeetDesc": "Incluye sesión de fotos profesional",
+                "ultimateMeetTitle": "Experiencia Definitiva",
+                "ultimateMeetDesc": "Tratamiento VIP con todos los beneficios",
+                "meetDateLabel": "Fecha y hora preferida para el encuentro",
+                "specialRequestsLabel": "Solicitudes especiales",
+                "meetFanYearLabel": "¿En qué año te hiciste fan?",
+                "meetFullNameLabel": "Nombre completo",
+                "meetPhoneLabel": "Número de teléfono",
+                "meetEmailLabel": "Dirección de correo",
+                "meetCountryLabel": "País",
+                "meetAddressLabel": "Dirección",
+                "meetSubmit": "Enviar solicitud",
+                "meetSuccessText": "Has enviado una solicitud y la administración se pondrá en contacto contigo por correo electrónico en breve. Revisa tu correo para notificaciones de nuestra parte. Gracias.",
+                
+                // Notification
+                "notificationText": "¡Nueva solicitud enviada! Revisa tu correo para más detalles."
+            },
+          
+            cn: {
+                // Navigation
+                "navHome": "主页",
+                "navAbout": "关于",
+                "navProducts": "产品",
+                "navContact": "联系",
+                
+                // Hero Section
+                "heroTitle1": "欢迎来到",
+                "heroTitle2": "Marco Zunino 官方粉丝平台",
+                "heroDescription": "获取粉丝会员和与 Marco Zunino 亲自见面机会的独家访问权限！",
+                "heroButton": "查看优惠",
+                
+                // Security
+                "secureText": "安全连接",
+                "securityNoticeTitle": "安全提示：",
+                "securityNoticeText": "本网站使用先进的安全措施保护您的数据。所有表单提交均已加密并监控可疑活动。",
+                
+                // Products
+                "productsTitle": "粉丝独家优惠",
+                "membershipTitle": "粉丝会员",
+                "membershipDescription": "加入独家粉丝俱乐部，享受特别权益、折扣和独家内容。",
+                "membershipPrice": "起价 $499.99/年",
+                "membershipButton": "立即申请",
+                "meetTitle": "见面会",
+                "meetDescription": "有机会亲自见到 Marco Zunino。这是一次终生难忘的体验！",
+                "meetPrice": "起价 $999.99",
+                "meetButton": "立即预订",
+                
+                // About Section
+                "aboutTitle": "关于 Marco Zunino",
+                "aboutText1": "Marco Zunino 是一位秘鲁演员兼歌手，以其在戏剧和电视领域的作品而著称。凭借多年的职业生涯，他因出色表演获得认可，并在拉美娱乐界享有知名度。",
+                "aboutText2": "因其动情的表演和与国际艺术家的合作而闻名，Marco 建立了全球忠实的粉丝群。此官方网站为粉丝提供连接、获取新项目、巡演、独家内容和特别粉丝体验的渠道。",
+                "aboutText3": "加入全球成千上万的粉丝，一起支持这位杰出的艺术家！",
+               
+                // Contact Form
+                "contactTitle": "订阅我们的通讯",
+                "nameLabel": "全名",
+                "emailLabel": "电子邮箱",
+                "contactSubmit": "立即加入",
+                "successText": "您已成功订阅我们的通讯。谢谢。",
+                
+                // Footer
+                "footerAboutTitle": "关于我们",
+                "footerAboutText": "Marco Zunino 官方粉丝平台，提供会员和见面体验的独家访问。",
+                "footerLinksTitle": "快速链接",
+                "footerHome": "主页",
+                "footerAbout": "关于",
+                "footerProducts": "产品",
+                "footerContact": "联系",
+                "footerConnectTitle": "与我们联系",
+                "footerFollowText": "在社交媒体上关注 Marco Zunino，获取最新动态！",
+                "copyrightText": "© 2026 Marco Zunino 粉丝平台。版权所有。",
+                
+                // Membership Modal
+                "membershipModalTitle": "粉丝会员",
+                "membershipSelectText": "请选择您偏好的会员等级：",
+                "regularFanTitle": "普通粉丝",
+                "regularFanDesc": "基础权益",
+                "vipFanTitle": "VIP 粉丝",
+                "vipFanDesc": "额外权益",
+                "vvipFanTitle": "VVIP 粉丝",
+                "vvipFanDesc": "所有权益",
+                "membershipNameLabel": "全名",
+                "membershipPhoneLabel": "电话号码",
+                "membershipEmailLabel": "电子邮箱",
+                "fanYearLabel": "您是哪一年成为粉丝的？",
+                "membershipCountryLabel": "国家",
+                "membershipAddressLabel": "地址",
+                "membershipSubmit": "提交您的申请",
+                "membershipSuccessText": "您已提交申请，管理方将尽快通过电子邮件与您联系，请注意查收我们的邮件通知。谢谢。",
+                
+                // Meet & Greet Modal
+                "meetModalTitle": "见面会",
+                "meetSelectText": "请选择您偏好的见面套餐：",
+                "standardMeetTitle": "标准见面会",
+                "standardMeetDesc": "基础见面体验",
+                "photoMeetTitle": "拍照体验",
+                "photoMeetDesc": "包含专业拍照环节",
+                "ultimateMeetTitle": "终极体验",
+                "ultimateMeetDesc": "VIP 招待，包含所有权益",
+                "meetDateLabel": "首选会面日期和时间",
+                "specialRequestsLabel": "特殊请求",
+                "meetFanYearLabel": "您是哪一年成为粉丝的？",
+                "meetFullNameLabel": "全名",
+                "meetPhoneLabel": "电话号码",
+                "meetEmailLabel": "电子邮箱",
+                "meetCountryLabel": "国家",
+                "meetAddressLabel": "地址",
+                "meetSubmit": "提交申请",
+                "meetSuccessText": "您已提交申请，管理方将尽快通过电子邮件与您联系，请注意查收我们的邮件通知。谢谢。",
+                
+                // Notification
+                "notificationText": "已提交新请求！请检查您的电子邮箱以获取详细信息。"
+              
+            },
+          
+            it: {
+                // Navigation
+                "navHome": "Home",
+                "navAbout": "Informazioni",
+                "navProducts": "Prodotti",
+                "navContact": "Contatto",
+                
+                // Hero Section
+                "heroTitle1": "Benvenuto su",
+                "heroTitle2": "Piattaforma Ufficiale dei Fan di Marco Zunino",
+                "heroDescription": "Accedi in esclusiva alle adesioni per fan e alle opportunità di meet & greet con Marco Zunino in persona.",
+                "heroButton": "Scopri le offerte",
+                
+                // Security
+                "secureText": "Connessione sicura",
+                "securityNoticeTitle": "Avviso sulla sicurezza:",
+                "securityNoticeText": "Questo sito utilizza misure di sicurezza avanzate per proteggere i tuoi dati. Tutte le invii dei moduli sono crittografati e monitorati per attività sospette.",
+                
+                // Products
+                "productsTitle": "Offerte Esclusive per Fan",
+                "membershipTitle": "Iscrizione Fan",
+                "membershipDescription": "Unisciti al club esclusivo dei fan per vantaggi speciali, sconti e contenuti esclusivi.",
+                "membershipPrice": "Da $499.99/anno",
+                "membershipButton": "Candidati ora",
+                "meetTitle": "Meet & Greet",
+                "meetDescription": "Ottieni la possibilità di incontrare Marco Zunino di persona. Un'esperienza unica!",
+                "meetPrice": "Da $999.99",
+                "meetButton": "Prenota ora",
+                
+                // About Section
+                "aboutTitle": "Su Marco Zunino",
+                "aboutText1": "Marco Zunino è un attore e cantante peruviano celebrato per il suo lavoro in teatro e televisione. Con una carriera che dura molti anni, ha ricevuto riconoscimenti per le sue interpretazioni ed è noto nell'intrattenimento latinoamericano.",
+                "aboutText2": "Celebre per le sue interpretazioni sentite e le collaborazioni con artisti internazionali, Marco ha costruito una fedele base di fan a livello globale. Questo sito ufficiale è il luogo dove i fan possono connettersi, ricevere aggiornamenti sui nuovi progetti, tour, contenuti esclusivi ed esperienze speciali.",
+                "aboutText3": "Unisciti a migliaia di fan in tutto il mondo nel sostenere questo incredibile artista!",
+               
+                // Contact Form
+                "contactTitle": "Iscriviti alle nostre newsletter",
+                "nameLabel": "Nome completo",
+                "emailLabel": "Indirizzo e-mail",
+                "contactSubmit": "Iscriviti ora",
+                "successText": "Ti sei iscritto con successo alle nostre newsletter. Grazie.",
+                
+                // Footer
+                "footerAboutTitle": "Chi siamo",
+                "footerAboutText": "La piattaforma ufficiale dei fan di Marco Zunino che offre accesso esclusivo a iscrizioni ed esperienze di meet & greet.",
+                "footerLinksTitle": "Link rapidi",
+                "footerHome": "Home",
+                "footerAbout": "Informazioni",
+                "footerProducts": "Prodotti",
+                "footerContact": "Contatto",
+                "footerConnectTitle": "Connettiti con noi",
+                "footerFollowText": "Segui Marco Zunino sui social per gli ultimi aggiornamenti!",
+                "copyrightText": "© 2026 Piattaforma Fan di Marco Zunino. Tutti i diritti riservati.",
+                
+                // Membership Modal
+                "membershipModalTitle": "Iscrizione Fan",
+                "membershipSelectText": "Seleziona il livello di iscrizione preferito:",
+                "regularFanTitle": "Fan Regular",
+                "regularFanDesc": "Benefici di base",
+                "vipFanTitle": "Fan VIP",
+                "vipFanDesc": "Benefici extra",
+                "vvipFanTitle": "Fan VVIP",
+                "vvipFanDesc": "Tutti i benefici",
+                "membershipNameLabel": "Nome completo",
+                "membershipPhoneLabel": "Numero di telefono",
+                "membershipEmailLabel": "Indirizzo e-mail",
+                "fanYearLabel": "In che anno sei diventato fan?",
+                "membershipCountryLabel": "Paese",
+                "membershipAddressLabel": "Indirizzo",
+                "membershipSubmit": "Invia la tua richiesta",
+                "membershipSuccessText": "Hai inviato una richiesta e la direzione ti contatterà via e-mail a breve. Controlla sempre la tua posta per le nostre notifiche. Grazie.",
+                
+                // Meet & Greet Modal
+                "meetModalTitle": "Meet & Greet",
+                "meetSelectText": "Seleziona il pacchetto meet & greet preferito:",
+                "standardMeetTitle": "Meet & Greet Standard",
+                "standardMeetDesc": "Esperienza base di meet & greet",
+                "photoMeetTitle": "Esperienza Fotografica",
+                "photoMeetDesc": "Include sessione fotografica professionale",
+                "ultimateMeetTitle": "Esperienza Definitiva",
+                "ultimateMeetDesc": "Trattamento VIP con tutti i benefici",
+                "meetDateLabel": "Data e ora preferite per l'incontro",
+                "specialRequestsLabel": "Richieste speciali",
+                "meetFanYearLabel": "In che anno sei diventato fan?",
+                "meetFullNameLabel": "Nome completo",
+                "meetPhoneLabel": "Numero di telefono",
+                "meetEmailLabel": "Indirizzo e-mail",
+                "meetCountryLabel": "Paese",
+                "meetAddressLabel": "Indirizzo",
+                "meetSubmit": "Invia la tua richiesta",
+                "meetSuccessText": "Hai inviato una richiesta e la direzione ti contatterà via e-mail a breve. Controlla sempre la tua posta per le nostre notifiche. Grazie.",
+                
+                // Notification
+                "notificationText": "Nuova richiesta inviata! Controlla la tua e-mail per i dettagli."
+            },
+          
+            de: {
+               // Navigation
+                "navHome": "Start",
+                "navAbout": "Über",
+                "navProducts": "Produkte",
+                "navContact": "Kontakt",
+                
+                // Hero Section
+                "heroTitle1": "Willkommen bei",
+                "heroTitle2": "Offizielle Fan-Plattform von Marco Zunino",
+                "heroDescription": "Erhalten Sie exklusiven Zugang zu Fan-Mitgliedschaften und Meet-&-Greet-Gelegenheiten mit Marco Zunino persönlich.",
+                "heroButton": "Angebote ansehen",
+                
+                // Security
+                "secureText": "Sichere Verbindung",
+                "securityNoticeTitle": "Sicherheitshinweis:",
+                "securityNoticeText": "Diese Website verwendet fortschrittliche Sicherheitsmaßnahmen zum Schutz Ihrer Daten. Alle Formularübermittlungen werden verschlüsselt und auf verdächtige Aktivitäten überwacht.",
+                
+                // Products
+                "productsTitle": "Exklusive Fan-Angebote",
+                "membershipTitle": "Fan-Mitgliedschaft",
+                "membershipDescription": "Treten Sie dem exklusiven Fanclub bei, um besondere Vorteile, Rabatte und exklusive Inhalte zu erhalten.",
+                "membershipPrice": "Ab $499.99/Jahr",
+                "membershipButton": "Jetzt bewerben",
+                "meetTitle": "Meet & Greet",
+                "meetDescription": "Erhalten Sie die Chance, Marco Zunino persönlich zu treffen. Ein Erlebnis fürs Leben!",
+                "meetPrice": "Ab $999.99",
+                "meetButton": "Jetzt buchen",
+                
+                // About Section
+                "aboutTitle": "Über Marco Zunino",
+                "aboutText1": "Marco Zunino ist ein peruanischer Schauspieler und Sänger, bekannt für seine Arbeit im Theater und Fernsehen. Mit einer über viele Jahre dauernden Karriere hat er Anerkennung für seine Auftritte erhalten und ist in der lateinamerikanischen Unterhaltungsbranche bekannt.",
+                "aboutText2": "Bekannt für seine gefühlvollen Darbietungen und Zusammenarbeit mit internationalen Künstlern, hat Marco eine treue weltweite Fangemeinde aufgebaut. Diese offizielle Website ist der Ort für Fans, um sich zu verbinden, Updates zu neuen Projekten, Touren, exklusiven Inhalten und speziellen Fanerlebnissen zu erhalten.",
+                "aboutText3": "Schließen Sie sich Tausenden von Fans weltweit an und unterstützen Sie diesen großartigen Künstler!",
+               
+                // Contact Form
+                "contactTitle": "Abonnieren Sie unsere Newsletter",
+                "nameLabel": "Vollständiger Name",
+                "emailLabel": "E-Mail-Adresse",
+                "contactSubmit": "Jetzt beitreten",
+                "successText": "Sie haben unseren Newsletter erfolgreich abonniert. Danke.",
+                
+                // Footer
+                "footerAboutTitle": "Über uns",
+                "footerAboutText": "Die offizielle Marco Zunino Fan-Plattform, die exklusiven Zugang zu Mitgliedschaften und Meet-&-Greet-Erlebnissen bietet.",
+                "footerLinksTitle": "Schnellzugriffe",
+                "footerHome": "Start",
+                "footerAbout": "Über",
+                "footerProducts": "Produkte",
+                "footerContact": "Kontakt",
+                "footerConnectTitle": "Kontaktieren Sie uns",
+                "footerFollowText": "Folgen Sie Marco Zunino in den sozialen Medien für die neuesten Updates!",
+                "copyrightText": "© 2026 Marco Zunino Fan-Plattform. Alle Rechte vorbehalten.",
+                
+                // Membership Modal
+                "membershipModalTitle": "Fan-Mitgliedschaft",
+                "membershipSelectText": "Wählen Sie Ihre bevorzugte Mitgliedschaftsstufe:",
+                "regularFanTitle": "Regulärer Fan",
+                "regularFanDesc": "Basisvorteile",
+                "vipFanTitle": "VIP Fan",
+                "vipFanDesc": "Zusätzliche Vorteile",
+                "vvipFanTitle": "VVIP Fan",
+                "vvipFanDesc": "Alle Vorteile",
+                "membershipNameLabel": "Vollständiger Name",
+                "membershipPhoneLabel": "Telefonnummer",
+                "membershipEmailLabel": "E-Mail-Adresse",
+                "fanYearLabel": "In welchem Jahr wurden Sie Fan?",
+                "membershipCountryLabel": "Land",
+                "membershipAddressLabel": "Adresse",
+                "membershipSubmit": "Anfrage senden",
+                "membershipSuccessText": "Sie haben eine Anfrage gesendet und die Verwaltung wird Sie in Kürze per E-Mail kontaktieren. Bitte prüfen Sie Ihre E-Mails auf Benachrichtigungen von uns. Danke.",
+                
+                // Meet & Greet Modal
+                "meetModalTitle": "Meet & Greet",
+                "meetSelectText": "Wählen Sie Ihr bevorzugtes Meet-&-Greet-Paket:",
+                "standardMeetTitle": "Standard Meet & Greet",
+                "standardMeetDesc": "Grundlegendes Meet-&-Greet-Erlebnis",
+                "photoMeetTitle": "Fotoerlebnis",
+                "photoMeetDesc": "Inklusive professioneller Fotosession",
+                "ultimateMeetTitle": "Ultimatives Erlebnis",
+                "ultimateMeetDesc": "VIP-Behandlung mit allen Vorteilen",
+                "meetDateLabel": "Bevorzugtes Datum und Uhrzeit des Treffens",
+                "specialRequestsLabel": "Besondere Wünsche",
+                "meetFanYearLabel": "In welchem Jahr wurden Sie Fan?",
+                "meetFullNameLabel": "Vollständiger Name",
+                "meetPhoneLabel": "Telefonnummer",
+                "meetEmailLabel": "E-Mail-Adresse",
+                "meetCountryLabel": "Land",
+                "meetAddressLabel": "Adresse",
+                "meetSubmit": "Anfrage senden",
+                "meetSuccessText": "Sie haben eine Anfrage gesendet und die Verwaltung wird Sie in Kürze per E-Mail kontaktieren. Bitte prüfen Sie Ihre E-Mails auf Benachrichtigungen von uns. Danke.",
+                
+                // Notification
+                "notificationText": "Neue Anfrage eingegangen! Prüfen Sie Ihre E-Mail für Details."
+              
+            },
+          
+            pt: { 
+                // Navigation
+                "navHome": "Início",
+                "navAbout": "Sobre",
+                "navProducts": "Produtos",
+                "navContact": "Contato",
+                
+                // Hero Section
+                "heroTitle1": "Bem-vindo a",
+                "heroTitle2": "Plataforma Oficial de Fãs de Marco Zunino",
+                "heroDescription": "Tenha acesso exclusivo a assinaturas de fãs e oportunidades de meet & greet com o próprio Marco Zunino.",
+                "heroButton": "Explorar ofertas",
+                
+                // Security
+                "secureText": "Conexão segura",
+                "securityNoticeTitle": "Aviso de segurança:",
+                "securityNoticeText": "Este site utiliza medidas de segurança avançadas para proteger seus dados. Todos os envios de formulários são criptografados e monitorados quanto a atividade suspeita.",
+                
+                // Products
+                "productsTitle": "Ofertas Exclusivas para Fãs",
+                "membershipTitle": "Associação de Fã",
+                "membershipDescription": "Junte-se ao clube exclusivo de fãs para benefícios especiais, descontos e conteúdo exclusivo.",
+                "membershipPrice": "A partir de $499.99/ano",
+                "membershipButton": "Inscreva-se agora",
+                "meetTitle": "Meet & Greet",
+                "meetDescription": "Tenha a chance de conhecer Marco Zunino pessoalmente. Uma experiência única!",
+                "meetPrice": "A partir de $999.99",
+                "meetButton": "Reservar agora",
+                
+                // About Section
+                "aboutTitle": "Sobre Marco Zunino",
+                "aboutText1": "Marco Zunino é um ator e cantor peruano celebrado por seu trabalho no teatro e na televisão. Com uma carreira que se estende por muitos anos, ele conquistou reconhecimento por suas atuações e é conhecido no entretenimento latino-americano.",
+                "aboutText2": "Reconhecido por suas performances emocionantes e colaborações com artistas internacionais, Marco construiu uma base de fãs dedicada globalmente. Este site oficial é o lugar para os fãs se conectarem, receberem atualizações sobre novos projetos, turnês, conteúdo exclusivo e experiências especiais.",
+                "aboutText3": "Junte-se a milhares de fãs em todo o mundo apoiando este incrível artista!",
+               
+                // Contact Form
+                "contactTitle": "Inscreva-se em nossas newsletters",
+                "nameLabel": "Nome completo",
+                "emailLabel": "Endereço de e-mail",
+                "contactSubmit": "Junte-se agora",
+                "successText": "Você se inscreveu com sucesso em nossas newsletters. Obrigado.",
+                
+                // Footer
+                "footerAboutTitle": "Sobre nós",
+                "footerAboutText": "A plataforma oficial de fãs de Marco Zunino que oferece acesso exclusivo a associações e experiências de meet & greet.",
+                "footerLinksTitle": "Links rápidos",
+                "footerHome": "Início",
+                "footerAbout": "Sobre",
+                "footerProducts": "Produtos",
+                "footerContact": "Contato",
+                "footerConnectTitle": "Conecte-se conosco",
+                "footerFollowText": "Siga Marco Zunino nas redes sociais para as últimas atualizações!",
+                "copyrightText": "© 2026 Plataforma de Fãs Marco Zunino. Todos os direitos reservados.",
+                
+                // Membership Modal
+                "membershipModalTitle": "Associação de Fã",
+                "membershipSelectText": "Selecione seu nível de associação preferido:",
+                "regularFanTitle": "Fã Regular",
+                "regularFanDesc": "Benefícios básicos",
+                "vipFanTitle": "Fã VIP",
+                "vipFanDesc": "Benefícios extras",
+                "vvipFanTitle": "Fã VVIP",
+                "vvipFanDesc": "Todos os benefícios",
+                "membershipNameLabel": "Nome completo",
+                "membershipPhoneLabel": "Número de telefone",
+                "membershipEmailLabel": "Endereço de e-mail",
+                "fanYearLabel": "Em que ano você se tornou fã?",
+                "membershipCountryLabel": "País",
+                "membershipAddressLabel": "Endereço",
+                "membershipSubmit": "Enviar pedido",
+                "membershipSuccessText": "Você enviou uma solicitação e a administração entrará em contato por e-mail em breve. Verifique sempre seu e-mail para notificações nossas. Obrigado.",
+                
+                // Meet & Greet Modal
+                "meetModalTitle": "Meet & Greet",
+                "meetSelectText": "Selecione seu pacote de meet & greet preferido:",
+                "standardMeetTitle": "Meet & Greet Padrão",
+                "standardMeetDesc": "Experiência básica de meet & greet",
+                "photoMeetTitle": "Experiência com Foto",
+                "photoMeetDesc": "Inclui sessão de fotos profissional",
+                "ultimateMeetTitle": "Experiência Suprema",
+                "ultimateMeetDesc": "Tratamento VIP com todos os benefícios",
+                "meetDateLabel": "Data e hora preferidas para o encontro",
+                "specialRequestsLabel": "Pedidos especiais",
+                "meetFanYearLabel": "Em que ano você se tornou fã?",
+                "meetFullNameLabel": "Nome completo",
+                "meetPhoneLabel": "Número de telefone",
+                "meetEmailLabel": "Endereço de e-mail",
+                "meetCountryLabel": "País",
+                "meetAddressLabel": "Endereço",
+                "meetSubmit": "Enviar pedido",
+                "meetSuccessText": "Você enviou uma solicitação e a administração entrará em contato por e-mail em breve. Verifique sempre seu e-mail para notificações nossas. Obrigado.",
+                
+                // Notification
+                "notificationText": "Nova solicitação enviada! Verifique seu e-mail para detalhes."
+              
+            }, 
+          
+            fr: {
+               // Navigation
+              "navHome": "Accueil",
+              "navAbout": "À propos",
+              "navProducts": "Produits",
+              "navContact": "Contact",
+              
+              // Hero Section
+              "heroTitle1": "Bienvenue sur",
+              "heroTitle2": "Plateforme officielle des fans de Marco Zunino",
+              "heroDescription": "Accédez en exclusivité aux abonnements fans et aux opportunités de rencontre avec Marco Zunino en personne.",
+              "heroButton": "Découvrir les offres",
+              
+              // Security
+              "secureText": "Connexion sécurisée",
+              "securityNoticeTitle": "Avis de sécurité :",
+              "securityNoticeText": "Ce site utilise des mesures de sécurité avancées pour protéger vos données. Toutes les soumissions de formulaire sont chiffrées et surveillées pour détecter toute activité suspecte.",
+              
+              // Products
+              "productsTitle": "Offres exclusives pour les fans",
+              "membershipTitle": "Abonnement fan",
+              "membershipDescription": "Rejoignez le club exclusif des fans pour des avantages spéciaux, des réductions et du contenu exclusif.",
+              "membershipPrice": "À partir de $499.99/an",
+              "membershipButton": "Postuler maintenant",
+              "meetTitle": "Meet & Greet",
+              "meetDescription": "Ayez la chance de rencontrer Marco Zunino en personne. Une expérience unique !",
+              "meetPrice": "À partir de $999.99",
+              "meetButton": "Réserver maintenant",
+              
+              // About Section
+              "aboutTitle": "À propos de Marco Zunino",
+              "aboutText1": "Marco Zunino est un acteur et chanteur péruvien célébré pour son travail au théâtre et à la télévision. Avec une carrière de nombreuses années, il a reçu une reconnaissance pour ses performances et est connu dans le divertissement latino-américain.",
+              "aboutText2": "Reconnu pour ses performances émouvantes et ses collaborations avec des artistes internationaux, Marco s'est construit une base de fans dévouée à l'échelle mondiale. Ce site officiel est l'endroit où les fans peuvent se connecter, obtenir des mises à jour sur les nouveaux projets, les tournées, du contenu exclusif et des expériences spéciales pour les fans.",
+              "aboutText3": "Rejoignez des milliers de fans dans le monde entier pour soutenir cet artiste incroyable !",
+             
+              // Contact Form
+              "contactTitle": "Abonnez-vous à nos newsletters",
+              "nameLabel": "Nom complet",
+              "emailLabel": "Adresse e-mail",
+              "contactSubmit": "Rejoindre maintenant",
+              "successText": "Vous vous êtes abonné avec succès à nos newsletters. Merci.",
+              
+              // Footer
+              "footerAboutTitle": "À propos de nous",
+              "footerAboutText": "La plateforme officielle des fans de Marco Zunino offrant un accès exclusif aux abonnements et aux expériences de meet & greet.",
+              "footerLinksTitle": "Liens rapides",
+              "footerHome": "Accueil",
+              "footerAbout": "À propos",
+              "footerProducts": "Produits",
+              "footerContact": "Contact",
+              "footerConnectTitle": "Connectez-vous avec nous",
+              "footerFollowText": "Suivez Marco Zunino sur les réseaux sociaux pour les dernières actualités !",
+              "copyrightText": "© 2026 Plateforme des fans de Marco Zunino. Tous droits réservés.",
+              
+              // Membership Modal
+              "membershipModalTitle": "Abonnement fan",
+              "membershipSelectText": "Sélectionnez votre niveau d'abonnement préféré :",
+              "regularFanTitle": "Fan régulier",
+              "regularFanDesc": "Avantages de base",
+              "vipFanTitle": "Fan VIP",
+              "vipFanDesc": "Avantages supplémentaires",
+              "vvipFanTitle": "Fan VVIP",
+              "vvipFanDesc": "Tous les avantages",
+              "membershipNameLabel": "Nom complet",
+              "membershipPhoneLabel": "Numéro de téléphone",
+              "membershipEmailLabel": "Adresse e-mail",
+              "fanYearLabel": "En quelle année êtes-vous devenu fan ?",
+              "membershipCountryLabel": "Pays",
+              "membershipAddressLabel": "Adresse",
+              "membershipSubmit": "Soumettre votre demande",
+              "membershipSuccessText": "Vous avez soumis une demande et la direction vous contactera par e-mail sous peu. Vérifiez toujours votre e-mail pour les notifications de notre part. Merci.",
+              
+              // Meet & Greet Modal
+              "meetModalTitle": "Meet & Greet",
+              "meetSelectText": "Sélectionnez votre forfait meet & greet préféré :",
+              "standardMeetTitle": "Meet & Greet standard",
+              "standardMeetDesc": "Expérience meet & greet de base",
+              "photoMeetTitle": "Expérience photo",
+              "photoMeetDesc": "Comprend une séance photo professionnelle",
+              "ultimateMeetTitle": "Expérience ultime",
+              "ultimateMeetDesc": "Traitement VIP avec tous les avantages",
+              "meetDateLabel": "Date et heure préférées pour la rencontre",
+              "specialRequestsLabel": "Demandes spéciales",
+              "meetFanYearLabel": "En quelle année êtes-vous devenu fan ?",
+              "meetFullNameLabel": "Nom complet",
+              "meetPhoneLabel": "Numéro de téléphone",
+              "meetEmailLabel": "Adresse e-mail",
+              "meetCountryLabel": "Pays",
+              "meetAddressLabel": "Adresse",
+              "meetSubmit": "Soumettre votre demande",
+              "meetSuccessText": "Vous avez soumis une demande et la direction vous contactera par e-mail sous peu. Vérifiez toujours votre e-mail pour les notifications de notre part. Merci.",
+              
+              // Notification
+              "notificationText": "Nouvelle demande envoyée ! Vérifiez votre e-mail pour les détails."
+              
+            },
+          
+            ru: {
+                // Navigation
+                "navHome": "Главная",
+        				"navAbout": "О нас",
+        				"navProducts": "Продукты",
+        				"navContact": "Контакты",
+        
+                // Hero Section
+        				"heroTitle1": "Добро пожаловать на",
+        				"heroTitle2": "Официальная фан-платформа Marco Zunino",
+        				"heroDescription": "Получите эксклюзивный доступ к членству фан-клуба и возможностям встретиться с самим Marco Zunino!",
+        				"heroButton": "Посмотреть предложения",
+        
+                // Security
+        				"secureText": "Безопасное соединение",
+        				"securityNoticeTitle": "Уведомление о безопасности:",
+        				"securityNoticeText": "Этот сайт использует современные меры безопасности для защиты ваших данных. Все отправленные формы шифруются и контролируются на подозрительную активность.",
+        
+                // Products
+        				"productsTitle": "Эксклюзивные предложения для фанатов",
+        				"membershipTitle": "Членство фаната",
+        				"membershipDescription": "Присоединяйтесь к эксклюзивному фан-клубу для специальных привилегий, скидок и уникального контента.",
+        				"membershipPrice": "От 499,99$/год",
+        				"membershipButton": "Подать заявку сейчас",
+        				"meetTitle": "Встреча",
+        				"meetDescription": "Получите шанс встретиться с Marco Zunino лично. Уникальный опыт!",
+        				"meetPrice": "От 999,99$",
+        				"meetButton": "Забронировать сейчас",
+        
+                // About Section
+        				"aboutTitle": "Об Алехандро Сансе",
+        				"aboutText1": "Алехандро Санс — испанский певец, автор песен и музыкант из Мадрида, известный своими поэтическими текстами и поп-музыкой с влиянием фламенко. За свою более чем тридцатилетнюю карьеру он завоевал множество наград, в том числе несколько премий Latin Grammy и Grammy, и наиболее известен такими хитами, как «Corazón Partío» и «Amiga Mía».",
+        				"aboutText2": "Известный своими душевными выступлениями и сотрудничеством с международными артистами, Алехандро завоевал преданную армию поклонников по всему миру. Этот официальный сайт — место, где фанаты могут общаться, получать новости о новой музыке, гастролях, эксклюзивном контенте и специальных мероприятиях для поклонников.",
+        				"aboutText3": "Присоединяйтесь к тысячам фанатов по всему миру и поддержите этого невероятного артиста!",
+        
+                // Contact Form
+        				"contactTitle": "Подпишитесь на нашу рассылку",
+        				"nameLabel": "Полное имя",
+        				"emailLabel": "Электронная почта",
+        				"contactSubmit": "Присоединяйтесь сейчас",
+        				"successText": "Вы успешно подписались на нашу рассылку. Спасибо.",
+        
+                // Footer
+        				"footerAboutTitle": "О нас",
+        				"footerAboutText": "Официальная фан-платформа Marco Zunino с эксклюзивным доступом к членству и встречам.",
+        				"footerLinksTitle": "Быстрые ссылки",
+        				"footerHome": "Главная",
+        				"footerAbout": "О нас",
+        				"footerProducts": "Продукты",
+        				"footerContact": "Контакты",
+        				"footerConnectTitle": "Свяжитесь с нами",
+        				"footerFollowText": "Следите за Marco Zunino в соцсетях для последних новостей!",
+        				"copyrightText": "© 2025 Фан-платформа Marco Zunino. Все права защищены.",
+        
+                // Membership Modal
+        				"membershipModalTitle": "Членство фаната",
+        				"membershipSelectText": "Выберите желаемый уровень членства:",
+        				"regularFanTitle": "Обычный фанат",
+        				"regularFanDesc": "Базовые привилегии",
+        				"vipFanTitle": "VIP-фанат",
+        				"vipFanDesc": "Дополнительные привилегии",
+        				"vvipFanTitle": "VVIP-фанат",
+        				"vvipFanDesc": "Все привилегии",
+        				"membershipNameLabel": "Полное имя",
+        				"membershipPhoneLabel": "Номер телефона",
+        				"membershipEmailLabel": "Электронная почта",
+        				"fanYearLabel": "В каком году вы стали фанатом",
+        				"membershipCountryLabel": "Страна",
+        				"membershipAddressLabel": "Адрес",
+        				"membershipSubmit": "Отправить заявку",
+        				"membershipSuccessText": "Ваша заявка отправлена, руководство свяжется с вами по электронной почте в ближайшее время. Всегда проверяйте свой email для уведомлений от нас. Спасибо.",
+        
+                // Meet & Greet Modal
+        				"meetModalTitle": "Встреча",
+        				"meetSelectText": "Выберите желаемый пакет встречи:",
+        				"standardMeetTitle": "Стандартная встреча",
+        				"standardMeetDesc": "Базовый опыт встречи",
+        				"photoMeetTitle": "Фото-опыт",
+        				"photoMeetDesc": "Включает профессиональную фотосессию",
+        				"ultimateMeetTitle": "Ultimate-опыт",
+        				"ultimateMeetDesc": "VIP-обслуживание со всеми привилегиями",
+        				"meetDateLabel": "Желаемая дата и время",
+        				"specialRequestsLabel": "Особые пожелания",
+        				"meetFanYearLabel": "В каком году вы стали фанатом",
+        				"meetFullNameLabel": "Полное имя",
+        				"meetPhoneLabel": "Номер телефона",
+        				"meetEmailLabel": "Электронная почта",
+        				"meetCountryLabel": "Страна",
+        				"meetAddressLabel": "Адрес",
+        				"meetSubmit": "Отправить заявку",
+        				"meetSuccessText": "Ваша заявка отправлена, руководство свяжется с вами по электронной почте в ближайшее время. Всегда проверяйте свой email для уведомлений от нас. Спасибо.",
+        
+                // Notification
+        				"notificationText": "Новая заявка отправлена! Проверьте свою электронную почту для деталей."
+            },
+          
+            ar: {
+               // Navigation
+                "navHome": "الصفحة الرئيسية",
+                "navAbout": "حول",
+                "navProducts": "المنتجات",
+                "navContact": "اتصل",
+                
+                // Hero Section
+                "heroTitle1": "مرحبًا بك في",
+                "heroTitle2": "المنصة الرسمية لمعجبي ماركو زونينو",
+                "heroDescription": "احصل على وصول حصري لعضويات المعجبين وفرص اللقاء والتصوير مع ماركو زونينو شخصيًا!",
+                "heroButton": "استعرض العروض",
+                
+                // Security
+                "secureText": "اتصال آمن",
+                "securityNoticeTitle": "إشعار أمني:",
+                "securityNoticeText": "يستخدم هذا الموقع تدابير أمنية متقدمة لحماية بياناتك. جميع استمارات الإرسال مشفرة ويتم مراقبتها لاكتشاف أي نشاط مريب.",
+                
+                // Products
+                "productsTitle": "عروض حصرية للمعجبين",
+                "membershipTitle": "عضوية المعجبين",
+                "membershipDescription": "انضم إلى نادي المعجبين الحصري للاستفادة من ميزات خاصة وخصومات ومحتوى حصري.",
+                "membershipPrice": "ابتداءً من $499.99/سنة",
+                "membershipButton": "قدّم الآن",
+                "meetTitle": "لقاء وتحية",
+                "meetDescription": "احظَ بفرصة لقاء ماركو زونينو شخصيًا. تجربة لا تُنسى!",
+                "meetPrice": "ابتداءً من $999.99",
+                "meetButton": "احجز الآن",
+                
+                // About Section
+                "aboutTitle": "حول ماركو زونينو",
+                "aboutText1": "ماركو زونينو ممثل ومغنٍ بيروفي يُحتفى به لأعماله في المسرح والتلفزيون. على مدار مسيرة طويلة، نال تقديراً لأدائه ويشتهر في مجال الترفيه بأمريكا اللاتينية.",
+                "aboutText2": "مشهور بأدائه العاطفي وتعاوناته مع فنانين دوليين، بنى ماركو قاعدة جماهيرية مخلصة عالمياً. هذا الموقع الرسمي مكان المعجبين للتواصل والحصول على تحديثات حول مشاريع جديدة، والجولات، والمحتوى الحصري، وتجارب المعجبين الخاصة.",
+                "aboutText3": "انضم إلى آلاف المعجبين حول العالم لدعم هذا الفنان المذهل!",
+               
+                // Contact Form
+                "contactTitle": "اشترك في نشراتنا الإخبارية",
+                "nameLabel": "الاسم الكامل",
+                "emailLabel": "عنوان البريد الإلكتروني",
+                "contactSubmit": "انضم الآن",
+                "successText": "لقد اشتركت بنجاح في نشراتنا الإخبارية. شكرًا لك.",
+                
+                // Footer
+                "footerAboutTitle": "معلومات عنا",
+                "footerAboutText": "المنصة الرسمية لمعجبي ماركو زونينو، تقدم وصولًا حصريًا للعضويات وتجارب اللقاء والتصوير.",
+                "footerLinksTitle": "روابط سريعة",
+                "footerHome": "الصفحة الرئيسية",
+                "footerAbout": "حول",
+                "footerProducts": "المنتجات",
+                "footerContact": "اتصل",
+                "footerConnectTitle": "تواصل معنا",
+                "footerFollowText": "تابع ماركو زونينو على وسائل التواصل الاجتماعي لأحدث التحديثات!",
+                "copyrightText": "© 2026 منصة معجبي ماركو زونينو. كل الحقوق محفوظة.",
+                
+                // Membership Modal
+                "membershipModalTitle": "عضوية المعجبين",
+                "membershipSelectText": "اختر مستوى العضوية الذي تفضله:",
+                "regularFanTitle": "معجب عادي",
+                "regularFanDesc": "مزايا أساسية",
+                "vipFanTitle": "معجب VIP",
+                "vipFanDesc": "مزايا إضافية",
+                "vvipFanTitle": "معجب VVIP",
+                "vvipFanDesc": "جميع المزايا",
+                "membershipNameLabel": "الاسم الكامل",
+                "membershipPhoneLabel": "رقم الهاتف",
+                "membershipEmailLabel": "البريد الإلكتروني",
+                "fanYearLabel": "في أي سنة أصبحت من المعجبين؟",
+                "membershipCountryLabel": "البلد",
+                "membershipAddressLabel": "العنوان",
+                "membershipSubmit": "ارسل طلبك",
+                "membershipSuccessText": "أرسلت طلبًا وسيتواصل معك فريق الإدارة عبر البريد الإلكتروني قريبًا. تأكد من مراجعة بريدك الإلكتروني للحصول على إشعارات منا. شكرًا.",
+                
+                // Meet & Greet Modal
+                "meetModalTitle": "لقاء وتحية",
+                "meetSelectText": "اختر باقة اللقاء والتصوير المفضلة لديك:",
+                "standardMeetTitle": "لقاء وتحية قياسي",
+                "standardMeetDesc": "تجربة لقاء وتحية أساسية",
+                "photoMeetTitle": "تجربة تصوير",
+                "photoMeetDesc": "تشمل جلسة تصوير احترافية",
+                "ultimateMeetTitle": "التجربة القصوى",
+                "ultimateMeetDesc": "معاملة VIP مع جميع المزايا",
+                "meetDateLabel": "التاريخ والوقت المفضل للقاء",
+                "specialRequestsLabel": "طلبات خاصة",
+                "meetFanYearLabel": "في أي سنة أصبحت من المعجبين؟",
+                "meetFullNameLabel": "الاسم الكامل",
+                "meetPhoneLabel": "رقم الهاتف",
+                "meetEmailLabel": "البريد الإلكتروني",
+                "meetCountryLabel": "البلد",
+                "meetAddressLabel": "العنوان",
+                "meetSubmit": "ارسل طلبك",
+                "meetSuccessText": "أرسلت طلبًا وسيتواصل معك فريق الإدارة عبر البريد الإلكتروني قريبًا. تأكد من مراجعة بريدك الإلكتروني للحصول على إشعارات منا. شكرًا.",
+                
+                // Notification
+                "notificationText": "تم إرسال طلب جديد! تحقق من بريدك الإلكتروني للحصول على التفاصيل."
+              
+            },
+          
+			el: {
+        				// Navigation
+                "navHome": "Αρχική",
+                "navAbout": "Σχετικά",
+                "navProducts": "Προϊόντα",
+                "navContact": "Επικοινωνία",
+                
+                // Hero Section
+                "heroTitle1": "Καλώς ορίσατε στο",
+                "heroTitle2": "Επίσημη Πλατφόρμα Φαν του Marco Zunino",
+                "heroDescription": "Αποκτήστε αποκλειστική πρόσβαση σε συνδρομές θαυμαστών και ευκαιρίες για συνάντηση με τον ίδιο τον Marco Zunino.",
+                "heroButton": "Εξερευνήστε προσφορές",
+                
+                // Security
+                "secureText": "Ασφαλής σύνδεση",
+                "securityNoticeTitle": "Σημείωμα ασφάλειας:",
+                "securityNoticeText": "Αυτός ο ιστότοπος χρησιμοποιεί προηγμένα μέτρα ασφάλειας για να προστατεύει τα δεδομένα σας. Όλες οι υποβολές φορμών κρυπτογραφούνται και παρακολουθούνται για ύποπτη δραστηριότητα.",
+                
+                // Products
+                "productsTitle": "Αποκλειστικές Προσφορές για Fans",
+                "membershipTitle": "Συνδρομή Fan",
+                "membershipDescription": "Γίνετε μέλος του αποκλειστικού fan club για ειδικά προνόμια, εκπτώσεις και αποκλειστικό περιεχόμενο.",
+                "membershipPrice": "Από $499.99/έτος",
+                "membershipButton": "Κάντε αίτηση τώρα",
+                "meetTitle": "Meet & Greet",
+                "meetDescription": "Κερδίστε την ευκαιρία να συναντήσετε προσωπικά τον Marco Zunino. Μια εμπειρία που συμβαίνει μία φορά στη ζωή!",
+                "meetPrice": "Από $999.99",
+                "meetButton": "Κάντε κράτηση τώρα",
+                
+                // About Section
+                "aboutTitle": "Σχετικά με τον Marco Zunino",
+                "aboutText1": "Ο Marco Zunino είναι Περουβιανός ηθοποιός και τραγουδιστής, γνωστός για τη δουλειά του στο θέατρο και την τηλεόραση. Με μια καριέρα που εκτείνεται σε πολλά χρόνια, έχει λάβει αναγνώριση για τις ερμηνείες του και είναι γνωστός στη λατινοαμερικανική ψυχαγωγία.",
+                "aboutText2": "Διάσημος για τις συναισθηματικές ερμηνείες και τις συνεργασίες με διεθνείς καλλιτέχνες, ο Marco έχει χτίσει ένα αφοσιωμένο παγκόσμιο κοινό. Αυτή η επίσημη ιστοσελίδα είναι το σημείο όπου οι fans μπορούν να συνδεθούν, να λάβουν ενημερώσεις για νέα έργα, περιοδείες, αποκλειστικό περιεχόμενο και ειδικές εμπειρίες.",
+                "aboutText3": "Ενταχθείτε σε χιλιάδες θαυμαστές παγκοσμίως για να υποστηρίξετε αυτόν τον εκπληκτικό καλλιτέχνη!",
+               
+                // Contact Form
+                "contactTitle": "Εγγραφείτε στα ενημερωτικά μας δελτία",
+                "nameLabel": "Πλήρες όνομα",
+                "emailLabel": "Διεύθυνση email",
+                "contactSubmit": "Εγγραφείτε τώρα",
+                "successText": "Εγγραφήκατε επιτυχώς στα ενημερωτικά μας δελτία. Ευχαριστούμε.",
+                
+                // Footer
+                "footerAboutTitle": "Σχετικά με εμάς",
+                "footerAboutText": "Η επίσημη πλατφόρμα φαν του Marco Zunino που προσφέρει αποκλειστική πρόσβαση σε συνδρομές και εμπειρίες συναντήσεων.",
+                "footerLinksTitle": "Γρήγοροι σύνδεσμοι",
+                "footerHome": "Αρχική",
+                "footerAbout": "Σχετικά",
+                "footerProducts": "Προϊόντα",
+                "footerContact": "Επικοινωνία",
+                "footerConnectTitle": "Συνδεθείτε μαζί μας",
+                "footerFollowText": "Ακολουθήστε τον Marco Zunino στα social για τις τελευταίες ενημερώσεις!",
+                "copyrightText": "© 2026 Επίσημη Πλατφόρμα Φαν Marco Zunino. Όλα τα δικαιώματα διατηρούνται.",
+                
+                // Membership Modal
+                "membershipModalTitle": "Συνδρομή Fan",
+                "membershipSelectText": "Επιλέξτε το προτιμώμενο επίπεδο συνδρομής:",
+                "regularFanTitle": "Κανονικός Fan",
+                "regularFanDesc": "Βασικά προνόμια",
+                "vipFanTitle": "Fan VIP",
+                "vipFanDesc": "Επιπλέον προνόμια",
+                "vvipFanTitle": "Fan VVIP",
+                "vvipFanDesc": "Όλα τα προνόμια",
+                "membershipNameLabel": "Πλήρες όνομα",
+                "membershipPhoneLabel": "Τηλεφωνικός αριθμός",
+                "membershipEmailLabel": "Διεύθυνση email",
+                "fanYearLabel": "Σε ποιο έτος γίνατε fan;",
+                "membershipCountryLabel": "Χώρα",
+                "membershipAddressLabel": "Διεύθυνση",
+                "membershipSubmit": "Υποβολή αιτήματος",
+                "membershipSuccessText": "Υποβάλατε ένα αίτημα και η διοίκηση θα επικοινωνήσει μαζί σας μέσω email σύντομα. Ελέγχετε πάντα το email σας για ειδοποιήσεις από εμάς. Ευχαριστούμε.",
+                
+                // Meet & Greet Modal
+                "meetModalTitle": "Meet & Greet",
+                "meetSelectText": "Επιλέξτε το πακέτο meet & greet που προτιμάτε:",
+                "standardMeetTitle": "Στεινταρντ Meet & Greet",
+                "standardMeetDesc": "Βασική εμπειρία συναντήσεων",
+                "photoMeetTitle": "Φωτογραφική Εμπειρία",
+                "photoMeetDesc": "Περιλαμβάνει επαγγελματική φωτογράφιση",
+                "ultimateMeetTitle": "Απόλυτη Εμπειρία",
+                "ultimateMeetDesc": "VIP μεταχείριση με όλα τα προνόμια",
+                "meetDateLabel": "Προτιμώμενη ημερομηνία και ώρα συνάντησης",
+                "specialRequestsLabel": "Ειδικά αιτήματα",
+                "meetFanYearLabel": "Σε ποιο έτος γίνατε fan;",
+                "meetFullNameLabel": "Πλήρες όνομα",
+                "meetPhoneLabel": "Τηλεφωνικός αριθμός",
+                "meetEmailLabel": "Διεύθυνση email",
+                "meetCountryLabel": "Χώρα",
+                "meetAddressLabel": "Διεύθυνση",
+                "meetSubmit": "Υποβολή αιτήματος",
+                "meetSuccessText": "Υποβάλατε ένα αίτημα και η διοίκηση θα επικοινωνήσει μαζί σας μέσω email σύντομα. Ελέγχετε πάντα το email σας για ειδοποιήσεις από εμάς. Ευχαριστούμε.",
+                
+                // Notification
+                "notificationText": "Υποβλήθηκε νέο αίτημα! Ελέγξτε το email σας για λεπτομέρειες."
+			}
+          
+        };
+
+        // Set language function
+        function setLanguage(lang) {
+            // Update the language in localStorage
+            localStorage.setItem('preferredLanguage', lang);
+            
+            // Update the language button text
+            document.getElementById('currentLangDisplay').textContent = lang.toUpperCase();
+            document.getElementById('currentLang').textContent = lang.toUpperCase();
+            
+            // Update all text elements with translations
+            for (const key in translations[lang]) {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = translations[lang][key];
+                }
+            }
+            
+            // Update the HTML lang attribute
+            document.documentElement.lang = lang;
+        }
+
+        // Detect user language on page load
+        function detectUserLanguage() {
+            // Check if user has a preferred language saved
+            const savedLanguage = localStorage.getItem('preferredLanguage');
+            if (savedLanguage) {
+                return savedLanguage;
+            }
+            
+            // Detect browser language
+            const browserLang = navigator.language || navigator.userLanguage;
+            const primaryLang = browserLang.split('-')[0];
+            
+            // Check if we support this language
+            if (translations[primaryLang]) {
+                return primaryLang;
+            }
+            
+            // Default to Spanish
+            return 'es';
+        }
+
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const userLanguage = detectUserLanguage();
+            setLanguage(userLanguage);
+            
+            // Set minimum date for meet & greet to today
+            const meetDate = document.getElementById('meetDate');
+            if (meetDate) {
+                meetDate.min = new Date().toISOString().split('T')[0];
+            }
+        });
+
+        // Security: Prevent console errors in production
+        if (typeof console === "undefined" || typeof console.log === "undefined") {
+            console = { log: function() {} };
+        }
+
+        // Security: Disable right-click context menu to prevent image theft
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            showNotification('Right-click is disabled for security reasons.');
+        });
+
+        // Security: Disable text selection on sensitive elements
+        document.addEventListener('selectstart', function(e) {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+                return; // Allow selection in form fields
+            }
+            e.preventDefault();
+        });
+
+        // Security: Detect and block common hacking tools
+        const blockedKeywords = ['webscarab', 'burp', 'sqlmap', 'nmap', 'metasploit'];
+        window.addEventListener('load', function() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            for (const keyword of blockedKeywords) {
+                if (userAgent.includes(keyword)) {
+                    document.body.innerHTML = '<h1>Access Denied</h1><p>Security violation detected.</p>';
+                    throw new Error('Security violation');
+                }
+            }
+        });
+
+        // Modal functionality
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.style.display = 'none';
+                });
+            }
+        }
+
+        // Membership selection
+        function selectMembership(element) {
+            const options = element.parentElement.querySelectorAll('.membership-option');
+            options.forEach(option => option.classList.remove('selected'));
+            
+            element.classList.add('selected');
+            
+            // Set the corresponding radio button as checked
+            const radioButton = element.querySelector('input[type="radio"]');
+            if (radioButton) {
+                radioButton.checked = true;
+            }
+        }
+
+        // Meet & Greet package selection
+        function selectMeetPackage(element, packageType) {
+            const options = element.parentElement.querySelectorAll('.membership-option');
+            options.forEach(option => option.classList.remove('selected'));
+            
+            element.classList.add('selected');
+            
+            // Set the corresponding radio button as checked
+            const radioButton = element.querySelector('input[type="radio"]');
+            if (radioButton) {
+                radioButton.checked = true;
+            }
+        }
+
+        // Advanced input validation
+        function validateName(name) {
+            const nameRegex = /^[a-zA-Z\s]{2,100}$/;
+            return nameRegex.test(name.trim());
+        }
+
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function validatePhone(phone) {
+            if (!phone) return true; // Phone is optional
+            const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+            return phoneRegex.test(phone.replace(/[\s\-\(\)]/g, ''));
+        }
+
+        // Rate limiting implementation
+        const submissionLimits = {
+            contact: { count: 0, lastSubmission: 0 },
+            membership: { count: 0, lastSubmission: 0 },
+            meet: { count: 0, lastSubmission: 0 }
+        };
+
+        function checkRateLimit(formType) {
+            const now = Date.now();
+            const limit = submissionLimits[formType];
+            
+            // Reset count if more than 1 hour has passed
+            if (now - limit.lastSubmission > 3600000) {
+                limit.count = 0;
+            }
+            
+            // Allow maximum 3 submissions per hour
+            if (limit.count >= 3) {
+                showNotification('Too many submissions. Please try again later.', 'error');
+                return false;
+            }
+            
+            limit.count++;
+            limit.lastSubmission = now;
+            return true;
+        }
+
+        // Formspree form handling with enhanced security
+        function handleFormspreeSubmission(form, successMessageId, formspreeStatusId, formType) {
+            // Check rate limiting
+            if (!checkRateLimit(formType)) {
+                return false;
+            }
+
+            // Validate honeypot fields
+            const honeypotFields = form.querySelectorAll('input[type="text"][style*="display: none"]');
+            for (const field of honeypotFields) {
+                if (field.value) {
+                    // Likely a bot submission
+                    showNotification('Submission rejected. Please contact support if this is an error.', 'error');
+                    return false;
+                }
+            }
+
+            // Show loading state
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Submitting...';
+            submitButton.disabled = true;
+            
+            // Hide any previous status messages
+            document.getElementById(formspreeStatusId).style.display = 'none';
+            
+            // Use Formspree's built-in submission
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    // Show success message
+                    document.getElementById(successMessageId).style.display = 'block';
+                    document.getElementById(formspreeStatusId).className = 'formspree-status success';
+                    document.getElementById(formspreeStatusId).textContent = 'Request submitted successfully!';
+                    document.getElementById(formspreeStatusId).style.display = 'block';
+                    
+                    // Show admin notification
+                    showNotification('New request submitted! Check your email for details.');
+                    
+                    // Reset form
+                    form.reset();
+                    
+                    // Close modal after 1 seconds
+                    setTimeout(() => {
+                        const modal = form.closest('.modal');
+                        if (modal) {
+                            closeModal(modal.id);
+                        }
+                    }, 1000);
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            document.getElementById(formspreeStatusId).className = 'formspree-status error';
+                            document.getElementById(formspreeStatusId).textContent = data.errors.map(error => error.message).join(', ');
+                            document.getElementById(formspreeStatusId).style.display = 'block';
+                        } else {
+                            document.getElementById(formspreeStatusId).className = 'formspree-status error';
+                            document.getElementById(formspreeStatusId).textContent = 'There was an error submitting your request. Please try again.';
+                            document.getElementById(formspreeStatusId).style.display = 'block';
+                        }
+                    });
+                }
+            }).catch(error => {
+                document.getElementById(formspreeStatusId).className = 'formspree-status error';
+                document.getElementById(formspreeStatusId).textContent = 'There was an error submitting your request. Please try again.';
+                document.getElementById(formspreeStatusId).style.display = 'block';
+            }).finally(() => {
+                // Reset button state
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            });
+            
+            // Prevent default form submission
+            return false;
+        }
+
+        // Show notification
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = type === 'error' ? 'notification error' : 'notification';
+            notification.style.display = 'block';
+            
+            // Hide notification after 30 seconds
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 30000);
+        }
+
+        // Real-time form validation
+        function setupFormValidation(form) {
+            const inputs = form.querySelectorAll('input, textarea, select');
+            
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    validateField(this);
+                });
+                
+                input.addEventListener('input', function() {
+                    // Clear error when user starts typing
+                    if (this.classList.contains('error')) {
+                        this.classList.remove('error');
+                        const errorElement = this.nextElementSibling;
+                        if (errorElement && errorElement.classList.contains('error-message')) {
+                            errorElement.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        }
+
+        // Validate a single field
+        function validateField(field) {
+            let isValid = true;
+            let errorMessage = '';
+            
+            switch (field.type) {
+                case 'text':
+                    if (field.name.includes('name') || field.id.includes('Name')) {
+                        isValid = validateName(field.value);
+                        errorMessage = 'Please enter a valid name (letters and spaces only, 2-100 characters)';
+                    }
+                    break;
+                case 'email':
+                    isValid = validateEmail(field.value);
+                    errorMessage = 'Please enter a valid email address';
+                    break;
+                case 'tel':
+                    isValid = validatePhone(field.value);
+                    errorMessage = 'Please enter a valid phone number';
+                    break;
+                case 'textarea':
+                    isValid = field.value.length <= 1000;
+                    errorMessage = 'Message must be less than 1000 characters';
+                    break;
+            }
+            
+            if (!isValid && field.value) {
+                field.classList.add('error');
+                const errorElement = field.nextElementSibling;
+                if (errorElement && errorElement.classList.contains('error-message')) {
+                    errorElement.textContent = errorMessage;
+                    errorElement.style.display = 'block';
+                }
+            } else {
+                field.classList.remove('error');
+                const errorElement = field.nextElementSibling;
+                if (errorElement && errorElement.classList.contains('error-message')) {
+                    errorElement.style.display = 'none';
+                }
+            }
+            
+            return isValid;
+        }
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate all fields
+            let allValid = true;
+            const fields = this.querySelectorAll('input, textarea');
+            fields.forEach(field => {
+                if (!validateField(field) && field.required) {
+                    allValid = false;
+                }
+            });
+            
+            if (allValid) {
+                handleFormspreeSubmission(this, 'successMessage', 'formspreeStatus', 'contact');
+            }
+        });
+
+        // Membership form submission
+        document.getElementById('membershipForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate all fields
+            let allValid = true;
+            const fields = this.querySelectorAll('input, textarea, select');
+            fields.forEach(field => {
+                if (!validateField(field) && field.required) {
+                    allValid = false;
+                }
+            });
+            
+            if (allValid) {
+                handleFormspreeSubmission(this, 'membershipSuccessMessage', 'membershipFormspreeStatus', 'membership');
+            }
+        });
+
+        // Meet & Greet form submission
+        document.getElementById('meetForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate all fields
+            let allValid = true;
+            const fields = this.querySelectorAll('input, textarea, select');
+            fields.forEach(field => {
+                if (!validateField(field) && field.required) {
+                    allValid = false;
+                }
+            });
+            
+            if (allValid) {
+                handleFormspreeSubmission(this, 'meetSuccessMessage', 'meetFormspreeStatus', 'meet');
+            }
+        });
+
+		// Live Chat Widget Functionality
+        const chatBtn = document.getElementById('chatWidgetButton');
+        const chatBox = document.getElementById('chatWidgetBox');
+        const chatClose = document.getElementById('chatWidgetClose');
+        const chatMessages = document.getElementById('chatWidgetMessages');
+        const chatInput = document.getElementById('chatWidgetInput');
+        const chatSend = document.getElementById('chatWidgetSend');
+
+        // Open/close chat
+        chatBtn.addEventListener('click', () => {
+            chatBox.style.display = (chatBox.style.display === 'flex') ? 'none' : 'flex';
+        });
+        chatClose.addEventListener('click', () => {
+            chatBox.style.display = 'none';
+        });
+
+        // Send message on button click
+        chatSend.addEventListener('click', sendMessage);
+
+        // Send message on Enter key
+        chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Quick question click
+        chatMessages.addEventListener('click', function(e) {
+            if (e.target.classList.contains('chat-widget-quick-question')) {
+                sendQuickQuestion(e.target.dataset.question);
+            }
+        });
+
+        // Send quick question
+        function sendQuickQuestion(question) {
+            addMessage(question, 'user');
+            setTimeout(() => {
+                let response = "Our support team will contact you shortly.";
+                if (question.includes('membership')) {
+                    response = "For membership issues, please ensure your details are correct. Would you like to speak with a support agent?";
+                } else if (question.includes('Meet & Greet')) {
+                 response = "For Meet & Greet, please check your email for confirmation. Need more help?";
+                }
+                addMessage(response, 'bot');
+            }, 1000);
+        }
+
+        // Send message function
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+            addMessage(message, 'user');
+            chatInput.value = '';
+            setTimeout(() => {
+                const responses = [
+                    "Thank you for reaching out! We'll get back to you soon.",
+                    "Our team will reply as soon as possible.",
+                    "Thanks for your message. We're on it!",
+                    "We appreciate your patience. Our support team will be with you shortly."
+                ];
+                addMessage(responses[Math.floor(Math.random() * responses.length)], 'bot');
+            }, 1000);
+        }
+
+        // Add message to chat
+        function addMessage(text, sender) {
+            const msg = document.createElement('div');
+            msg.className = 'chat-widget-message ' + (sender === 'user' ? 'user' : 'bot');
+            msg.textContent = text;
+            chatMessages.appendChild(msg);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+		}
+
+		// Accessibility: Close chat on Esc key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') chatBox.style.display = 'none';
+        });
+
+        // Initialize form validation
+        document.addEventListener('DOMContentLoaded', function() {
+            setupFormValidation(document.getElementById('contactForm'));
+            setupFormValidation(document.getElementById('membershipForm'));
+            setupFormValidation(document.getElementById('meetForm'));
+        });
+
+        // Security: Monitor for suspicious activity
+        let suspiciousActivityCount = 0;
+        window.addEventListener('error', function(e) {
+            suspiciousActivityCount++;
+            if (suspiciousActivityCount > 10) {
+                // Too many errors, possible attack
+                document.body.innerHTML = '<h1>Security Alert</h1><p>Unusual activity detected. Please refresh the page.</p>';
+            }
+        });
+    </script>
+</body></html>
+
+
