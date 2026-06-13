@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marco Zunino - Official Fan Platform</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9e[...]
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtA[...]
     
     <!-- Security Meta Tags -->
     <meta http-equiv="Content-Security-Policy" content="
@@ -385,11 +385,16 @@
             overflow-y: auto;
         }
 
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .modal-content {
             background: white;
             width: 90%;
             max-width: 600px;
-            margin: 50px auto;
             border-radius: 10px;
             box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
             animation: modalFade 0.3s;
@@ -424,6 +429,9 @@
             cursor: pointer;
             color: #999;
             transition: color 0.3s;
+            background: none;
+            border: none;
+            padding: 0;
         }
 
         .close-modal:hover {
@@ -908,7 +916,7 @@
     <!-- Security Notice -->
     <div class="container">
         <div class="security-notice">
-            <strong><i class="fas fa-shield-alt"></i> <span id="securityNoticeTitle">Security Notice:</span></strong> <span id="securityNoticeText">This website uses advanced security measures to protect your data.</span>
+            <strong><i class="fas fa-shield-alt"></i> <span id="securityNoticeTitle">Security Notice:</span></strong> <span id="securityNoticeText">This website uses advanced security measures to protect your personal information.</span>
         </div>
     </div>
 
@@ -952,8 +960,8 @@
             </div>
             <div class="about-text">
                 <h3 id="aboutTitle">About Marco Zunino</h3>
-                  <p id="aboutText1">Marco Zunino is a Peruvian actor and singer celebrated for his work in theatre and television. With a career spanning many years, he has earned recognition for his performances.</p>
-                <p id="aboutText2">Renowned for his heartfelt performances and collaborations with international artists, Marco has built a devoted global fanbase. This official website is the place to connect with him.</p>
+                  <p id="aboutText1">Marco Zunino is a Peruvian actor and singer celebrated for his work in theatre and television. With a career spanning many years, he has earned recognition for his outstanding talent and dedication to his craft.</p>
+                <p id="aboutText2">Renowned for his heartfelt performances and collaborations with international artists, Marco has built a devoted global fanbase. This official website is the perfect place to connect with fellow fans and stay updated on his latest projects.</p>
                 <p id="aboutText3">Join thousands of fans worldwide in supporting this incredible artist!</p>
             </div>
         </div>
@@ -996,105 +1004,241 @@
         </form>
     </section>
 
+    <!-- Fan Membership Modal -->
+    <div id="membershipModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="membershipModalTitle">Fan Membership Application</h2>
+                <button class="close-modal" onclick="closeModal('membershipModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="membershipForm" action="https://formspree.io/f/xlggenga" method="POST" onsubmit="return validateMembershipForm(event)">
+                    <input type="hidden" name="_subject" value="New Fan Membership Application">
+                    <input type="hidden" name="form_type" value="membership">
+
+                    <div class="form-group">
+                        <label id="membershipTypeLabel">Select Membership Type:</label>
+                        <div class="membership-options">
+                            <div class="membership-option" onclick="selectMembership('basic', event)">
+                                <h3>Basic</h3>
+                                <div class="price">€499.99</div>
+                            </div>
+                            <div class="membership-option" onclick="selectMembership('premium', event)">
+                                <h3>Premium</h3>
+                                <div class="price">€799.99</div>
+                            </div>
+                            <div class="membership-option" onclick="selectMembership('vip', event)">
+                                <h3>VIP</h3>
+                                <div class="price">€1299.99</div>
+                            </div>
+                        </div>
+                        <input type="hidden" id="membershipType" name="membership_type" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="memName" id="memNameLabel">Full Name</label>
+                        <input type="text" id="memName" name="name" class="form-control" placeholder="Enter your full name" required maxlength="100">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="memEmail" id="memEmailLabel">Email Address</label>
+                        <input type="email" id="memEmail" name="email" class="form-control" placeholder="Enter your email" required maxlength="254">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="memPhone" id="memPhoneLabel">Phone Number</label>
+                        <input type="tel" id="memPhone" name="phone" class="form-control" placeholder="Enter your phone number" maxlength="20">
+                    </div>
+
+                    <div class="formspree-status" id="membershipStatus"></div>
+
+                    <button type="submit" class="btn" style="width: 100%;" id="membershipSubmit">Apply Now</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Meet & Greet Modal -->
+    <div id="meetModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="meetModalTitle">Meet & Greet Booking</h2>
+                <button class="close-modal" onclick="closeModal('meetModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="meetForm" action="https://formspree.io/f/xlggenga" method="POST" onsubmit="return validateMeetForm(event)">
+                    <input type="hidden" name="_subject" value="New Meet & Greet Booking">
+                    <input type="hidden" name="form_type" value="meet_greet">
+
+                    <div class="form-group">
+                        <label for="meetName" id="meetNameLabel">Full Name</label>
+                        <input type="text" id="meetName" name="name" class="form-control" placeholder="Enter your full name" required maxlength="100">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="meetEmail" id="meetEmailLabel">Email Address</label>
+                        <input type="email" id="meetEmail" name="email" class="form-control" placeholder="Enter your email" required maxlength="254">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="meetPhone" id="meetPhoneLabel">Phone Number</label>
+                        <input type="tel" id="meetPhone" name="phone" class="form-control" placeholder="Enter your phone number" required maxlength="20">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="meetCountry" id="meetCountryLabel">Country</label>
+                        <input type="text" id="meetCountry" name="country" class="form-control" placeholder="Enter your country" maxlength="100">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="meetDate" id="meetDateLabel">Preferred Date</label>
+                        <input type="date" id="meetDate" name="preferred_date" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="meetGuests" id="meetGuestsLabel">Number of Guests (including you)</label>
+                        <input type="number" id="meetGuests" name="number_of_guests" class="form-control" min="1" max="5" value="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="meetMessage" id="meetMessageLabel">Tell us about yourself (Optional)</label>
+                        <textarea id="meetMessage" name="message" class="form-control" placeholder="Share your message for Marco..." maxlength="500" rows="4"></textarea>
+                    </div>
+
+                    <div class="formspree-status" id="meetStatus"></div>
+
+                    <button type="submit" class="btn" style="width: 100%;" id="meetSubmit">Book Now - €1499.99</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>About</h3>
+                    <h3 id="footerAboutTitle">About</h3>
                     <ul class="footer-links">
-                        <li><a href="#about">About Marco</a></li>
-                        <li><a href="#products">Offers</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#about" id="footerAbout">About Marco</a></li>
+                        <li><a href="#products" id="footerProducts">Our Offers</a></li>
+                        <li><a href="#contact" id="footerContact">Newsletter</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Follow Us</h3>
+                    <h3 id="footerSupportTitle">Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" id="footerFAQ">FAQ</a></li>
+                        <li><a href="#" id="footerPrivacy">Privacy Policy</a></li>
+                        <li><a href="#" id="footerTerms">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 id="footerFollowTitle">Follow Us</h3>
                     <div class="social-icons">
-                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://facebook.com/marcozunino" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
+                        <a href="https://instagram.com/marcozunino" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                        <a href="https://twitter.com/marcozunino" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
+                        <a href="https://youtube.com/marcozunino" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
                     </div>
-                </div>
-                <div class="footer-section">
-                    <h3>Legal</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                    </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2024 Marco Zunino Official. All rights reserved.</p>
+                <p id="copyrightText">&copy; 2024 Marco Zunino. All rights reserved. | <a href="#" style="color: #ddd;">Privacy Policy</a></p>
             </div>
         </div>
     </footer>
 
     <script>
-        // ===== FORM VALIDATION (FIXED) =====
+        // Modal Functions
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Membership Selection
+        function selectMembership(type, event) {
+            event.stopPropagation();
+            document.getElementById('membershipType').value = type;
+            
+            // Update UI
+            const options = document.querySelectorAll('.membership-option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+        }
+
+        // Form Validation
         function validateForm(event) {
             event.preventDefault();
-            
-            const nameInput = document.getElementById('name');
-            const emailInput = document.getElementById('email');
-            const nameError = document.getElementById('nameError');
-            const emailError = document.getElementById('emailError');
-            const websiteInput = document.getElementById('website');
-            
+            const form = event.target;
             let isValid = true;
-            
-            // Reset error messages
-            nameError.style.display = 'none';
-            emailError.style.display = 'none';
-            nameInput.classList.remove('error');
-            emailInput.classList.remove('error');
-            
-            // Get trimmed values
-            const nameValue = nameInput.value.trim();
-            const emailValue = emailInput.value.trim();
-            
-            // Validate Name: Allow letters, spaces, hyphens, apostrophes, and accented characters
-            const nameRegex = /^[a-zA-ZÀ-ÿ\s'-]{2,100}$/;
-            if (!nameValue || !nameRegex.test(nameValue)) {
-                nameError.style.display = 'block';
-                nameInput.classList.add('error');
+
+            // Basic validation
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+
+            if (!name) {
+                document.getElementById('nameError').style.display = 'block';
                 isValid = false;
+            } else {
+                document.getElementById('nameError').style.display = 'none';
             }
-            
-            // Validate Email: Simple but effective email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailValue || !emailRegex.test(emailValue)) {
-                emailError.style.display = 'block';
-                emailInput.classList.add('error');
+
+            if (!email || !email.includes('@')) {
+                document.getElementById('emailError').style.display = 'block';
                 isValid = false;
+            } else {
+                document.getElementById('emailError').style.display = 'none';
             }
-            
-            // Check honeypot field (should be empty)
-            if (websiteInput.value.trim() !== '') {
-                console.log('Bot detected');
-                return false;
-            }
-            
-            // If validation passes, allow form submission to Formspree
+
             if (isValid) {
-                document.getElementById('contactForm').submit();
+                form.submit();
             }
-            
             return false;
         }
-        
-        // ===== LANGUAGE FUNCTIONS =====
-        function setLanguage(lang) {
-            console.log('Language set to:', lang);
-            // Add your language switching logic here
+
+        function validateMembershipForm(event) {
+            event.preventDefault();
+            const membershipType = document.getElementById('membershipType').value;
+            
+            if (!membershipType) {
+                alert('Please select a membership type');
+                return false;
+            }
+
+            event.target.submit();
+            return false;
         }
-        
-        // ===== MODAL FUNCTIONS =====
-        function openModal(modalName) {
-            console.log('Opening modal:', modalName);
-            // Add your modal opening logic here
+
+        function validateMeetForm(event) {
+            event.preventDefault();
+            event.target.submit();
+            return false;
+        }
+
+        // Language switching (basic implementation)
+        function setLanguage(lang) {
+            console.log('Language changed to:', lang);
+            // Here you would add your language switching logic
         }
     </script>
 </body>
