@@ -2354,7 +2354,7 @@
 
         // Advanced input validation
         function validateName(name) {
-            const nameRegex = /^[a-zA-Z\s]{2,100}$/;
+            const nameRegex = /^[\p{L}\p{M}'`-\s]{2,100}$/u;
             return nameRegex.test(name.trim());
         }
 
